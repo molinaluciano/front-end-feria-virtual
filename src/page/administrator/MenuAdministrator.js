@@ -1,5 +1,10 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 function MenuAdministrator() {
+  const signOut = () => {
+    localStorage.removeItem("PROFILE");
+    window.location.href = "/";
+  };
+
   return (
     <div className="container">
       <header className="App-header">
@@ -20,9 +25,9 @@ function MenuAdministrator() {
             Gestionar Subastas
           </a>
           <hr />
-          <a href="#" className="list-group-item list-group-item-action">
+          <button type="button" onClick={signOut} className="btn btn-primary">
             Cerrar Sesion
-          </a>
+          </button>
         </li>
       </ul>
     </div>
