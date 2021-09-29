@@ -7,14 +7,10 @@ function Login() {
   const [form, setHandleForm] = useState({
     email: "",
     password: "",
-    idTypeUser: "",
   });
 
   const validationForm = (formToValidate) => {
     if (formToValidate.password === "" || formToValidate.email === "") {
-      return false;
-    }
-    if (formToValidate.idTypeUser === 0 || formToValidate.idTypeUser === "") {
       return false;
     }
 
@@ -45,7 +41,10 @@ function Login() {
 
     try {
       const result = await loginUsers(form);
-      const menuProfile = result.toLowerCase();
+      console.log("🚀 ~ file: Login.js ~ line 48 ~ sendForm ~ result", result);
+
+      const menuProfile = result.tipo_usuario_out.toLowerCase();
+
       localStorage.setItem("PROFILE", menuProfile);
       window.location.href = "/" + menuProfile;
     } catch (error) {
@@ -95,16 +94,7 @@ function Login() {
               id="InputPassword"
             />
           </div>
-          <div className="mb-3 ">
-            <select onChange={handleInputChange} name="idTypeUser">
-              <option value="">Tipo de Usuario</option>
-              <option value="1">Administrator</option>
-              <option value="2">Cliente</option>
-              <option value="3">Consultor</option>
-              <option value="4">Productor</option>
-              <option value="4">Transportista</option>
-            </select>
-          </div>
+
           <button type="submit" className="btn btn-primary">
             Iniciar Sesion
           </button>

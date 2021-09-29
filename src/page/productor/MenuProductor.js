@@ -1,26 +1,26 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-function MenuCustomer() {
+import SignOutComponent from "../../component/SignOutComponent";
+
+function MenuProductor() {
   return (
     <div className="container">
       <header className="App-header">
-        <h1>Panel de Cliente</h1>
+        <h1>Panel de Productor</h1>
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
           <a href="#" className="list-group-item list-group-item-action">
-            Mis Compras
+            Mis Solicitudes
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Crear nueva solicitud
+            Ver Solicitudes disponibles
           </a>
           <hr />
-          <a href="#" className="list-group-item list-group-item-action">
-            Cerrar Sesion
-          </a>
+          <SignOutComponent />
         </li>
       </ul>
     </div>
   );
 }
 
-export default MenuCustomer;
+export default MenuProductor;

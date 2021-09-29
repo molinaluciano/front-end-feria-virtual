@@ -1,26 +1,26 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-function MenuCarrier() {
+import SignOutComponent from "../../component/SignOutComponent";
+
+function MenuClienteLocal() {
   return (
     <div className="container">
       <header className="App-header">
-        <h1>Panel de Transportista</h1>
+        <h1>Panel de Cliente Local</h1>
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
           <a href="#" className="list-group-item list-group-item-action">
-            Gestionar Camiones
+            Mis Compras
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Gestionar Subastas
+            Crear nueva solicitud
           </a>
           <hr />
-          <a href="#" className="list-group-item list-group-item-action">
-            Cerrar Sesion
-          </a>
+          <SignOutComponent />
         </li>
       </ul>
     </div>
   );
 }
 
-export default MenuCarrier;
+export default MenuClienteLocal;

@@ -1,10 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-function MenuAdministrator() {
-  const signOut = () => {
-    localStorage.removeItem("PROFILE");
-    window.location.href = "/";
-  };
+import SignOutComponent from "../../component/SignOutComponent";
 
+function MenuAdministrador() {
   return (
     <div className="container">
       <header className="App-header">
@@ -25,13 +22,11 @@ function MenuAdministrator() {
             Gestionar Subastas
           </a>
           <hr />
-          <button type="button" onClick={signOut} className="btn btn-primary">
-            Cerrar Sesion
-          </button>
+          <SignOutComponent />
         </li>
       </ul>
     </div>
   );
 }
 
-export default MenuAdministrator;
+export default MenuAdministrador;

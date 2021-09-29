@@ -1,23 +1,25 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-function MenuConsultant() {
+import SignOutComponent from "../../component/SignOutComponent";
+function MenuClienteExterno() {
   return (
     <div className="container">
       <header className="App-header">
-        <h1>Panel de Consultor</h1>
+        <h1>Panel de Cliente Externo</h1>
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
           <a href="#" className="list-group-item list-group-item-action">
-            Generar reporte
+            Mis Compras
+          </a>
+          <a href="#" className="list-group-item list-group-item-action">
+            Crear nueva solicitud
           </a>
           <hr />
-          <a href="#" className="list-group-item list-group-item-action">
-            Cerrar Sesion
-          </a>
+          <SignOutComponent />
         </li>
       </ul>
     </div>
   );
 }
 
-export default MenuConsultant;
+export default MenuClienteExterno;

@@ -13,7 +13,6 @@ export const loginUsers = (form) => {
   return new Promise((resolve, reject) => {
     instance
       .post(endPoint, {
-        idTipoUsuario: form.idTypeUser,
         correo: form.email,
         contrasena: form.password,
       })
