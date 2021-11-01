@@ -1,5 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../component/SignOutComponent";
+import { Link } from 'react-router-dom';
+
 
 function MenuProductor() {
   return (
@@ -9,12 +11,12 @@ function MenuProductor() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <a href="#" className="list-group-item list-group-item-action">
-            Mis Solicitudes
-          </a>
-          <a href="#" className="list-group-item list-group-item-action">
-            Ver Solicitudes disponibles
-          </a>
+          <Link to="/productor/gestionar-solicitudes/mis-solicitudes" className="list-group-item list-group-item-action">
+            Gestionar solicitudes de venta
+          </Link>
+          <Link to="/productor/participar-solicitudes/solicitudes-disponibles" className="list-group-item list-group-item-action">
+            Participar solicitudes de venta
+          </Link>
           <hr />
           <SignOutComponent />
         </li>

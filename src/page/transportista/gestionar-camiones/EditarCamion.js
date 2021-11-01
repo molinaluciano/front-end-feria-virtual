@@ -1,19 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../component/SignOutComponent";
 
-function MenuClienteInterno() {
+function EditarCamion() {
   return (
     <div className="container">
       <header className="App-header">
-        <h1>Panel de Cliente Interno</h1>
+        <h1>EditarCamion</h1>
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
           <a href="#" className="list-group-item list-group-item-action">
-            Mis Compras
+          EditarCamion
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Crear nueva solicitud
+          EditarCamion
           </a>
           <hr />
           <SignOutComponent />
@@ -23,4 +23,4 @@ function MenuClienteInterno() {
   );
 }
 
-export default MenuClienteInterno;
+export default EditarCamion;

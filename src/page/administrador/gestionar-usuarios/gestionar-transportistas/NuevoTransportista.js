@@ -1,19 +1,19 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../component/SignOutComponent";
 
-function MenuClienteLocal() {
+function NuevoTransportista() {
   return (
     <div className="container">
       <header className="App-header">
-        <h1>Panel de Cliente Local</h1>
+        <h1>NuevoTransportista</h1>
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
           <a href="#" className="list-group-item list-group-item-action">
-            Mis Compras
+          NuevoTransportista
           </a>
           <a href="#" className="list-group-item list-group-item-action">
-            Crear nueva solicitud
+          NuevoTransportista
           </a>
           <hr />
           <SignOutComponent />
@@ -23,4 +23,4 @@ function MenuClienteLocal() {
   );
 }
 
-export default MenuClienteLocal;
+export default NuevoTransportista;

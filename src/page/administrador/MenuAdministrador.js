@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../component/SignOutComponent";
+import { Link } from 'react-router-dom';
 
 function MenuAdministrador() {
   return (
@@ -9,18 +10,18 @@ function MenuAdministrador() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <a href="#" className="list-group-item list-group-item-action">
+          <Link to="/administrador/gestionar-usuarios" className="list-group-item list-group-item-action">
             Gestionar Usuarios
-          </a>
-          <a href="#" className="list-group-item list-group-item-action">
+          </Link>
+          <Link to="#" className="list-group-item list-group-item-action">
             Gestionar Ventas
-          </a>
-          <a href="#" className="list-group-item list-group-item-action">
+          </Link>
+          <Link to="#" className="list-group-item list-group-item-action">
             Gestionar Informes
-          </a>
-          <a href="#" className="list-group-item list-group-item-action">
+          </Link>
+          <Link to="#" className="list-group-item list-group-item-action">
             Gestionar Subastas
-          </a>
+          </Link>
           <hr />
           <SignOutComponent />
         </li>

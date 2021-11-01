@@ -1,8 +1,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import SignOutComponent from "../../component/SignOutComponent";
+import SignOutComponent from "../../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
 
-function MenuTransportista() {
+function MisSubastas() {
   return (
     <div className="container">
       <header className="App-header">
@@ -10,11 +10,11 @@ function MenuTransportista() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <Link to="/transportista/gestionar-camiones/mis-camiones" className="list-group-item list-group-item-action">
-            Gestionar Camiones
+          <Link to="#" className="list-group-item list-group-item-action">
+            *FORM DE LAS SUBASTAS EN LAS QUE EL TRANSPORTISTA ESTA PARTICIPANDO*
           </Link>
           <Link to="/transportista/gestionar-subastas" className="list-group-item list-group-item-action">
-            Gestionar Subastas
+            Ir hacia atrás
           </Link>
           <hr />
           <SignOutComponent />
@@ -24,4 +24,4 @@ function MenuTransportista() {
   );
 }
 
-export default MenuTransportista;
+export default MisSubastas;

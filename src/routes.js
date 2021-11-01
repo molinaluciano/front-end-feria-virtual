@@ -1,24 +1,93 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
-import MenuAdministrator from "./page/administrador/MenuAdministrador";
-import MenuTransportista from "./page/transportista/MenuTransportista";
-import MenuConsultor from "./page/consultor/MenuConsultor";
-import MenuProductor from "./page/productor/MenuProductor";
-import MenuClienteExterno from "./page/clientes/MenuClienteExterno";
-import MenuClienteInterno from "./page/clientes/MenuClienteInterno";
-import MenuClienteLocal from "./page/clientes/MenuClienteLocal";
+/* ==== GENERAL ===== */
 import Login from "./page/general/Login";
+
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+/* ==== ADMINISTRADOR ===== */
+import MenuAdministrator from "./page/administrador/MenuAdministrador";
+import MenuGestionarUsuarios from "./page/administrador/gestionar-usuarios/MenuGestionarUsuarios";
+import GestionarClientes from "./page/administrador/gestionar-usuarios/gestionar-clientes/GestionarClientes";
+import GestionarProductores from "./page/administrador/gestionar-usuarios/gestionar-productores/GestionarProductores";
+import GestionarTransportistas from "./page/administrador/gestionar-usuarios/gestionar-transportistas/GestionarTransportistas";
+import NuevoCliente from "./page/administrador/gestionar-usuarios/gestionar-clientes/NuevoCliente";
+import NuevoProductor from "./page/administrador/gestionar-usuarios/gestionar-clientes/NuevoCliente";
+import NuevoTransportista from "./page/administrador/gestionar-usuarios/gestionar-clientes/NuevoCliente";
+
+
+/* ==== TRANSPORTISTA ===== */
+import MenuTransportista from "./page/transportista/MenuTransportista";
+import MisCamiones from "./page/transportista/gestionar-camiones/MisCamiones";
+import AgregarCamion from "./page/transportista/gestionar-camiones/AgregarCamion";
+import MisSubastas from "./page/transportista/gestionar-subastas/mis-subastas/MisSubastas";
+import GestionarSubastasTransportista from "./page/transportista/gestionar-subastas/MenuGestionarSubastas";
+import DetalleSubasta from "./page/transportista/gestionar-subastas/mis-subastas/DetalleSubasta";
+import SubastasDisponibles from "./page/transportista/gestionar-subastas/participar-subasta/SubastasDisponibles";
+import ParticiparSubasta from "./page/transportista/gestionar-subastas/participar-subasta/ParticiparSubasta";
+
+
+/* ==== CLIENTE EXTERNO ===== */
+import MisCompras from "./page/clientes/cliente_externo/MisCompras";
+import CrearSolicitud from "./page/clientes/cliente_externo/CrearSolicitud";
+
+/* ==== CLIENTE INTERNO ===== */
+import MenuClienteInterno from "./page/clientes/cliente_interno/MenuClienteInterno";
+
+/* ==== CLIENTE LOCAL ===== */
+import MenuClienteLocal from "./page/clientes/cliente_local/MenuClienteLocal";
+
+/* ==== CONSULTOR ===== */
+import MenuConsultor from "./page/consultor/MenuConsultor";
+
+/* ==== PRODUCTOR ===== */
+import MenuProductor from "./page/productor/MenuProductor";
+import MisSolicitudes from "./page/productor/gestionar_solicitudes_venta/MisSolicitudes";
+import SolicitudesDisponibles from "./page/productor/participar_solicitudes_venta/SolicitudesDisponibles";
+import DetalleSolicitudDisponible from "./page/productor/participar_solicitudes_venta/DetalleSolicitudDisponible";
+// import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
+
 
 function Routes() {
   return (
     <BrowserRouter>
       <Switch>
+        {/* ==== ADMINISTRADOR ===== */}
         <Route exact path="/administrador" component={MenuAdministrator} />
+        <Route exact path="/administrador/gestionar-usuarios" component={MenuGestionarUsuarios} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes" component={GestionarClientes} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-productores" component={GestionarProductores} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-transportistas" component={GestionarTransportistas} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes/nuevo-cliente" component={NuevoCliente} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes/nuevo-productor" component={NuevoProductor} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes/nuevo-transportista" component={NuevoTransportista} />
+        <Route exact path="/administrador/gestionar-ventas" component={MenuGestionarUsuarios} />
+
+        {/* ==== TRANSPORTISTA ===== */}
         <Route exact path="/transportista" component={MenuTransportista} />
-        <Route exact path="/cliente_externo" component={MenuClienteExterno} />
-        <Route exact path="/cliente_interno" component={MenuClienteInterno} />
-        <Route exact path="/cliente_local" component={MenuClienteLocal} />
+        <Route exact path="/transportista/gestionar-camiones/mis-camiones" component={MisCamiones} />
+        <Route exact path="/transportista/gestionar-camiones/mis-camiones/agregar-camion" component={AgregarCamion} />
+        <Route exact path="/transportista/gestionar-subastas" component={GestionarSubastasTransportista} />
+        <Route exact path="/transportista/gestionar-subastas/mis-subastas" component={MisSubastas} />
+        <Route exact path="/transportista/gestionar-subastas/participar-subastas" component={ParticiparSubasta} />
+        <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta" component={DetalleSubasta} />
+
+        {/* ==== CLIENTE EXTERNO ===== */}
+        <Route exact path="/cliente-externo/mis-compras" component={MisCompras} />
+        <Route exact path="/cliente-externo/crear-solicitud" component={CrearSolicitud} />
+
+        {/* ==== CLIENTE INTERNO ===== */}
+        <Route exact path="/cliente-interno" component={MenuClienteInterno} />
+
+        {/* ==== CLIENTE LOCAL ===== */}
+        <Route exact path="/cliente-local" component={MenuClienteLocal} />
+
+        {/* ==== CONSULTOR ===== */}
         <Route exact path="/consultor" component={MenuConsultor} />
+        
+        {/* ==== PRODUCTOR ===== */}
         <Route exact path="/productor" component={MenuProductor} />
+        <Route exact path="/productor/gestionar-solicitudes/mis-solicitudes" component={MisSolicitudes} />
+        <Route exact path="/productor/participar-solicitudes/solicitudes-disponibles" component={SolicitudesDisponibles} />
+        <Route exact path="/productor/participar-solicitudes/detalle-solicitud" component={DetalleSolicitudDisponible} />
+
         <Route exact path="/" component={Login} />
       </Switch>
     </BrowserRouter>
