@@ -11,7 +11,7 @@ function GestionarClientes() {
       <ul className="list-group mb-5">
         <li className="list-group-item">
           <Link to="/administrador/gestionar-usuarios/gestionar-clientes/nuevo-cliente" className="list-group-item list-group-item-action">
-          Nueva Solicitud
+          Nuevo Cliente
           </Link>
           <Link to="/administrador/gestionar-usuarios" className="list-group-item list-group-item-action">
           Ir hacia atrás

@@ -10,7 +10,7 @@ function GestionarTransportistas() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <Link to="/administrador/gestionar-usuarios/gestionar-productores/nuevo-transportista" className="list-group-item list-group-item-action">
+          <Link to="/administrador/gestionar-usuarios/gestionar-transportistas/nuevo-transportista" className="list-group-item list-group-item-action">
            Nuevo Transportista
           </Link>
           <Link to="/administrador/gestionar-usuarios" className="list-group-item list-group-item-action">
