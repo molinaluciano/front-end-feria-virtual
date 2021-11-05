@@ -10,6 +10,44 @@ function CrearSolicitud() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
+          <form class="mb-2">
+            <div className="row mb-3">
+              <div class="col-6">
+                <select class="form-control">
+                  <option>Categoría Fruta</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <select class="form-control">
+                  <option>Fruta</option>
+                </select>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <div class="col-6">
+                <select class="form-control">
+                  <option>Categoría Fruta</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <select class="form-control">
+                  <option>Fruta</option>
+                </select>
+              </div>
+            </div>
+            <div className="row mb-3">
+              <div class="col-6">
+                <select class="form-control">
+                  <option>Categoría Fruta</option>
+                </select>
+              </div>
+              <div class="col-6">
+                <select class="form-control">
+                  <option>Fruta</option>
+                </select>
+              </div>
+            </div>
+          </form>
           <Link to="#" className="list-group-item list-group-item-action">
            Crear Solicitud
           </Link>

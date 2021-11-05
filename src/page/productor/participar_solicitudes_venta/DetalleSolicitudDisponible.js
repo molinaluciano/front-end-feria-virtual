@@ -11,7 +11,10 @@ function DetalleSolicitudDisponible() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-         <Link to="/productor" className="list-group-item list-group-item-action">
+         <button className="btn-primary mb-2">
+            Participar
+          </button>
+         <Link to="/productor/participar-solicitudes/solicitudes-disponibles" className="list-group-item list-group-item-action">
             Ir hacia atrás
           </Link>
           <hr />

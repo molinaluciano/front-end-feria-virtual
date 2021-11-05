@@ -7,10 +7,12 @@ import MenuAdministrator from "./page/administrador/MenuAdministrador";
 import MenuGestionarUsuarios from "./page/administrador/gestionar-usuarios/MenuGestionarUsuarios";
 import GestionarClientes from "./page/administrador/gestionar-usuarios/gestionar-clientes/GestionarClientes";
 import GestionarProductores from "./page/administrador/gestionar-usuarios/gestionar-productores/GestionarProductores";
+import GestionarVentas from "./page/administrador/gestionar-ventas/MenuGestionarVentas";
 import GestionarTransportistas from "./page/administrador/gestionar-usuarios/gestionar-transportistas/GestionarTransportistas";
 import NuevoCliente from "./page/administrador/gestionar-usuarios/gestionar-clientes/NuevoCliente";
 import NuevoProductor from "./page/administrador/gestionar-usuarios/gestionar-productores/NuevoProductor";
 import NuevoTransportista from "./page/administrador/gestionar-usuarios/gestionar-transportistas/NuevoTransportista";
+import AceptarSolicitudes from "./page/administrador/gestionar-ventas/aceptar-solicitudes-de-compra/AceptarSolicitudesDeCompra";
 
 
 /* ==== TRANSPORTISTA ===== */
@@ -20,8 +22,8 @@ import AgregarCamion from "./page/transportista/gestionar-camiones/AgregarCamion
 import MisSubastas from "./page/transportista/gestionar-subastas/mis-subastas/MisSubastas";
 import GestionarSubastasTransportista from "./page/transportista/gestionar-subastas/MenuGestionarSubastas";
 import DetalleSubasta from "./page/transportista/gestionar-subastas/mis-subastas/DetalleSubasta";
-import SubastasDisponibles from "./page/transportista/gestionar-subastas/participar-subasta/SubastasDisponibles";
 import ParticiparSubasta from "./page/transportista/gestionar-subastas/participar-subasta/ParticiparSubasta";
+import SubastasDisponibles from "./page/transportista/gestionar-subastas/participar-subasta/SubastasDisponibles";
 
 
 /* ==== CLIENTE EXTERNO ===== */
@@ -58,7 +60,8 @@ function Routes() {
         <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes/nuevo-cliente" component={NuevoCliente} />
         <Route exact path="/administrador/gestionar-usuarios/gestionar-productores/nuevo-productor" component={NuevoProductor} />
         <Route exact path="/administrador/gestionar-usuarios/gestionar-transportistas/nuevo-transportista" component={NuevoTransportista} />
-        <Route exact path="/administrador/gestionar-ventas" component={MenuGestionarUsuarios} />
+        <Route exact path="/administrador/gestionar-ventas" component={GestionarVentas} />
+        <Route exact path="/administrador/gestionar-ventas/aceptar-solicitudes" component={AceptarSolicitudes} />
 
         {/* ==== TRANSPORTISTA ===== */}
         <Route exact path="/transportista" component={MenuTransportista} />
@@ -66,8 +69,8 @@ function Routes() {
         <Route exact path="/transportista/gestionar-camiones/mis-camiones/agregar-camion" component={AgregarCamion} />
         <Route exact path="/transportista/gestionar-subastas" component={GestionarSubastasTransportista} />
         <Route exact path="/transportista/gestionar-subastas/mis-subastas" component={MisSubastas} />
-        <Route exact path="/transportista/gestionar-subastas/participar-subastas" component={ParticiparSubasta} />
-        <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta" component={DetalleSubasta} />
+        <Route exact path="/transportista/gestionar-subastas/participar-subastas" component={SubastasDisponibles} />
+        <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta" component={ParticiparSubasta} />
 
         {/* ==== CLIENTE EXTERNO ===== */}
         <Route exact path="/cliente-externo/mis-compras" component={MisCompras} />

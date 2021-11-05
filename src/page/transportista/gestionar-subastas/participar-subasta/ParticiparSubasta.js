@@ -7,16 +7,20 @@ function ParticiparSubasta() {
   return (
     <div className="container">
       <header className="App-header">
-        <h1>Participar Subastas</h1>
+        <h1>Detalle Subasta N*XX</h1>
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <Link to="#" className="list-group-item list-group-item-action">
-          *DESPLIEGUE DE SUBASTAS DISPONIBLES*
-          </Link>
-          <Link to="/transportista" className="list-group-item list-group-item-action">
-          Ir hacia atrás 
-          </Link>
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <select class="form-control mb-3">
+                <option>Seleccionar Camion</option>
+              </select>
+            <a href="#" class="btn btn-primary">Participar</a>
+          </div>
+        </div>
           <hr />
           <SignOutComponent />
         </li>

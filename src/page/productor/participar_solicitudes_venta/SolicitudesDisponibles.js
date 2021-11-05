@@ -10,10 +10,36 @@ function SolicitudesDisponibles() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <Link to="/productor/participar-solicitudes/detalle-solicitud" className="list-group-item list-group-item-action">
-            Detalle Solicitud N*XX
-          </Link>
-          <Link to="/productor" className="list-group-item list-group-item-action">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="/productor/participar-solicitudes/detalle-solicitud" class="btn btn-primary">Participar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="/productor/participar-solicitudes/detalle-solicitud" class="btn btn-primary">Participar</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Special title treatment</h5>
+                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <a href="/productor/participar-solicitudes/detalle-solicitud" class="btn btn-primary">Participar</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <Link to="/productor" className="list-group-item list-group-item-action">
             Ir hacia atrás
           </Link>
           <hr />
