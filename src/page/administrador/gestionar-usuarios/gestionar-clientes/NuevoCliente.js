@@ -1,8 +1,76 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
+import swal from "sweetalert";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { createUser } from "../../../../service/clientes/cliente-externo/cliente_externo_service";
 
 function NuevoCliente() {
+  const [form, setHandleForm] = useState({
+    nombre: "",
+    apellidopaterno: "",
+    apellidomaterno: "",
+    correo: "",
+    password: "",
+    direccion: "",
+    rut: 0, // NO SE SI ES NUMERO
+    digitoverificador: "",
+    codigopostal: 0,
+    telefono: 0, 
+    pais: 1,
+    tipocliente: 2
+  });
+
+  // VALIDARRRRRRRRR
+  const validationForm = (formToValidate) => {
+    if (formToValidate.password === "" || formToValidate.email === "") {
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleInputChange = (event) => {
+    console.log(event.target.name, event.target.value);
+    setHandleForm({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const sendForm = async (event) => {
+    event.preventDefault();
+    if (!validationForm(form)) {
+      swal({
+        title: "Debe completar todos los campos!",
+        type: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok",
+      });
+
+      return;
+    }
+
+    try {
+      const result = await createUser(form);
+      console.log("🚀 ~ file: Login.js ~ line 48 ~ sendForm ~ result", result);
+
+      const menuProfile = result.tipo_usuario_out.toLowerCase();
+
+      localStorage.setItem("PROFILE", menuProfile);
+      window.location.href = "/" + menuProfile;
+    } catch (error) {
+      swal({
+        title: "El usuario no se ha encontrado!",
+        type: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok",
+      }).then(() => {
+        window.location.href = "/";
+      });
+    }
+  };
+
   return (
     <div className="container">
       <header className="App-header mb-3">
@@ -10,49 +78,49 @@ function NuevoCliente() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-        <form>
+        <form onSubmit={sendForm}>
           <div class="form-group">
             <label for="inputName">Nombre</label>
-            <input type="email" class="form-control" id="inputName" aria-describedby="emailHelp" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputName" placeholder=""/>
           </div>
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputApellidoPa">Apellido Paterno</label>
-            <input type="password" class="form-control" id="inputApellidoPa" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoPa" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputApellidoMa">Apellido Materno</label>
-            <input type="email" class="form-control" id="inputApellidoMa" aria-describedby="emailHelp" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoMa" placeholder=""/>
             </div>
           </div>
           <div class="form-group">
             <label for="inputCorreo">Correo</label>
-            <input type="email" class="form-control" id="inputCorreo" aria-describedby="emailHelp" placeholder=""/>
+            <input onChange={handleInputChange} type="email" class="form-control" id="inputCorreo" placeholder=""/>
           </div>
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputPass">Contraseña</label>
-            <input type="password" class="form-control" id="inputPass" placeholder=""/>
+            <input onChange={handleInputChange} type="password" class="form-control" id="inputPass" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="exampleInputEmail1">Confirmar Contraseña</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder=""/>
+            <input onChange={handleInputChange} type="password" class="form-control" id="exampleInputEmail1" placeholder=""/>
             </div>
           </div>
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputDireccion">Dirección</label>
-            <input type="password" class="form-control" id="inputDireccion" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputDireccion" placeholder=""/>
             </div>
             <div class="col-6">
               <div class="row mb-2">
                 <div class="col-10">
                   <label for="inputRut">Rut</label>
-                  <input type="email" class="form-control" id="inputRut" aria-describedby="emailHelp" placeholder=""/>
+                  <input onChange={handleInputChange} type="text" class="form-control" id="inputRut" placeholder=""/>
                 </div>
                 <div class="col-2">
                 <label for="inputNumRut"></label>
-                  <input type="email" class="form-control" id="inputNumRut" aria-describedby="emailHelp" placeholder=""/>
+                  <input onChange={handleInputChange} type="text" class="form-control" id="inputNumRut" placeholder=""/>
                 </div>
               </div>
             </div>
@@ -60,14 +128,14 @@ function NuevoCliente() {
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputCodigoPostal">Código Postal</label>
-            <input type="password" class="form-control" id="inputCodigoPostal" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputCodigoPostal" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputTelefono">Teléfono</label>
-            <input type="email" class="form-control" id="inputTelefono" aria-describedby="emailHelp" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputTelefono" placeholder=""/>
             </div>
           </div>
-          <div class="row mb-2">
+          <div class="row mb-2 mt-4">
             <div class="col-6">
               <select class="form-control">
                 <option>Seleccione País</option>
@@ -80,10 +148,18 @@ function NuevoCliente() {
             </div>
           </div>
         </form>
-
-        <Link to="/administrador/gestionar-usuarios/gestionar-clientes" className="list-group-item list-group-item-action">
-          Ir hacia atrás
-        </Link>
+        <div className="row mt-3">
+          <div className="col-6">    
+            <Link to="/administrador/gestionar-usuarios/gestionar-clientes" className="btn btn-primary w-75">
+              Ir hacia atrás
+            </Link>
+          </div>
+          <div className="col-6">
+            <button className="btn btn-primary w-75">
+              Agregar Cliente
+            </button>
+          </div>
+        </div>
         <hr />
         <SignOutComponent />
         </li>
