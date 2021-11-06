@@ -7,18 +7,18 @@ import { createUser } from "../../../../service/clientes/cliente-externo/cliente
 
 function NuevoCliente() {
   const [form, setHandleForm] = useState({
+    idTipoUsuario: 2,
+    idPais: 1,
     nombre: "",
-    apellidopaterno: "",
-    apellidomaterno: "",
+    apellidoPaterno: "",
+    apellidoMaterno: "",
     correo: "",
-    password: "",
+    contrasena: "",
+    rut: 0,
+    numeroIdentificador: "",
     direccion: "",
-    rut: 0, // NO SE SI ES NUMERO
-    digitoverificador: "",
-    codigopostal: 0,
+    codigoPostal: 0,
     telefono: 0, 
-    pais: 1,
-    tipocliente: 2
   });
 
   // VALIDARRRRRRRRR
@@ -86,11 +86,11 @@ function NuevoCliente() {
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputApellidoPa">Apellido Paterno</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoPa" name="apellidopaterno" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoPa" name="apellidoPaterno" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputApellidoMa">Apellido Materno</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoMa" name="apellidomaterno" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoMa" name="apellidoMaterno" placeholder=""/>
             </div>
           </div>
           <div class="form-group">
@@ -100,7 +100,7 @@ function NuevoCliente() {
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputPass">Contraseña</label>
-            <input onChange={handleInputChange} type="password" class="form-control" id="inputPass" name="password" placeholder=""/>
+            <input onChange={handleInputChange} type="password" class="form-control" id="inputPass" name="contrasena" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputConfirmPass">Confirmar Contraseña</label>
@@ -120,7 +120,7 @@ function NuevoCliente() {
                 </div>
                 <div class="col-2">
                 <label for="inputNumRut"></label>
-                  <input onChange={handleInputChange} type="text" class="form-control" id="inputNumRut" name="digitoverificador" placeholder=""/>
+                  <input onChange={handleInputChange} type="text" class="form-control" id="inputNumRut" name="numeroIdentificador" placeholder=""/>
                 </div>
               </div>
             </div>
@@ -128,7 +128,7 @@ function NuevoCliente() {
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputCodigoPostal">Código Postal</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputCodigoPostal" name="codigopostal" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputCodigoPostal" name="codigoPostal" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputTelefono">Teléfono</label>
@@ -147,19 +147,19 @@ function NuevoCliente() {
               </select>
             </div>
           </div>
+          <div className="row mt-3">
+            <div className="col-6">    
+              <Link to="/administrador/gestionar-usuarios/gestionar-clientes" className="btn btn-primary w-75">
+                Ir hacia atrás
+              </Link>
+            </div>
+            <div className="col-6">
+              <button type="submit" className="btn btn-primary w-75">
+                Agregar Cliente
+              </button>
+            </div>
+          </div>
         </form>
-        <div className="row mt-3">
-          <div className="col-6">    
-            <Link to="/administrador/gestionar-usuarios/gestionar-clientes" className="btn btn-primary w-75">
-              Ir hacia atrás
-            </Link>
-          </div>
-          <div className="col-6">
-            <button type="submit" className="btn btn-primary w-75">
-              Agregar Cliente
-            </button>
-          </div>
-        </div>
         <hr />
         <SignOutComponent />
         </li>

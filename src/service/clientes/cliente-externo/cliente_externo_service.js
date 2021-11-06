@@ -13,18 +13,20 @@ export const createUser = (form) => {
   return new Promise((resolve, reject) => {
     instance
       .post(endPoint, {
+        idUsuario: null,
+        idTipoUsuario: form.nombre,
+        idPais: form.pais,
         nombre: form.nombre,
-        apellidopaterno: form.apellidopaterno,
-        apellidomaterno: form.materno,
+        apellidoPaterno: form.apellidopaterno,
+        apellidoMaterno: form.materno,
         correo: form.correo,
-        password: form.password,
-        direccion: form.direccion,
+        contrasena: form.password,
         rut: form.rut,
-        digitoverificador: form.digitoverificador,
-        codigopostal: form.codigopostal,
+        numeroIdentificador: form.digitoverificador,
+        direccion: form.direccion,
+        codigoPostal: form.codigopostal,
         telefono: form.telefono,
-        pais: form.pais,
-        tipocliente: form.tipocliente
+        idContrato: null
       })
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
