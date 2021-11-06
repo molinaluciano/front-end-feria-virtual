@@ -31,7 +31,7 @@ function NuevoCliente() {
   };
 
   const handleInputChange = (event) => {
-    console.log(event.target.name, event.target.value);
+    console.log(form);
     setHandleForm({
       ...form,
       [event.target.name]: event.target.value,
@@ -81,46 +81,46 @@ function NuevoCliente() {
         <form onSubmit={sendForm}>
           <div class="form-group">
             <label for="inputName">Nombre</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputName" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputName" name="nombre" placeholder=""/>
           </div>
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputApellidoPa">Apellido Paterno</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoPa" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoPa" name="apellidopaterno" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputApellidoMa">Apellido Materno</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoMa" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputApellidoMa" name="apellidomaterno" placeholder=""/>
             </div>
           </div>
           <div class="form-group">
             <label for="inputCorreo">Correo</label>
-            <input onChange={handleInputChange} type="email" class="form-control" id="inputCorreo" placeholder=""/>
+            <input onChange={handleInputChange} type="email" class="form-control" id="inputCorreo" name="correo" placeholder=""/>
           </div>
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputPass">Contraseña</label>
-            <input onChange={handleInputChange} type="password" class="form-control" id="inputPass" placeholder=""/>
+            <input onChange={handleInputChange} type="password" class="form-control" id="inputPass" name="password" placeholder=""/>
             </div>
             <div class="col-6">
-            <label for="exampleInputEmail1">Confirmar Contraseña</label>
-            <input onChange={handleInputChange} type="password" class="form-control" id="exampleInputEmail1" placeholder=""/>
+            <label for="inputConfirmPass">Confirmar Contraseña</label>
+            <input onChange={handleInputChange} type="password" class="form-control" id="inputConfirmPass" placeholder=""/>
             </div>
           </div>
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputDireccion">Dirección</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputDireccion" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputDireccion" name="direccion" placeholder=""/>
             </div>
             <div class="col-6">
               <div class="row mb-2">
                 <div class="col-10">
                   <label for="inputRut">Rut</label>
-                  <input onChange={handleInputChange} type="text" class="form-control" id="inputRut" placeholder=""/>
+                  <input onChange={handleInputChange} type="text" class="form-control" id="inputRut" name="rut" placeholder=""/>
                 </div>
                 <div class="col-2">
                 <label for="inputNumRut"></label>
-                  <input onChange={handleInputChange} type="text" class="form-control" id="inputNumRut" placeholder=""/>
+                  <input onChange={handleInputChange} type="text" class="form-control" id="inputNumRut" name="digitoverificador" placeholder=""/>
                 </div>
               </div>
             </div>
@@ -128,11 +128,11 @@ function NuevoCliente() {
           <div class="row mb-2">
             <div class="col-6">
             <label for="inputCodigoPostal">Código Postal</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputCodigoPostal" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputCodigoPostal" name="codigopostal" placeholder=""/>
             </div>
             <div class="col-6">
             <label for="inputTelefono">Teléfono</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputTelefono" placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputTelefono" name="telefono" placeholder=""/>
             </div>
           </div>
           <div class="row mb-2 mt-4">
