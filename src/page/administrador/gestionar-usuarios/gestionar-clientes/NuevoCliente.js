@@ -40,16 +40,16 @@ function NuevoCliente() {
 
   const sendForm = async (event) => {
     event.preventDefault();
-    if (!validationForm(form)) {
-      swal({
-        title: "Debe completar todos los campos!",
-        type: "error",
-        confirmButtonColor: "#3085d6",
-        confirmButtonText: "Ok",
-      });
+    // if (!validationForm(form)) {
+    //   swal({
+    //     title: "Debe completar todos los campos!",
+    //     type: "error",
+    //     confirmButtonColor: "#3085d6",
+    //     confirmButtonText: "Ok",
+    //   });
 
-      return;
-    }
+    //   return;
+    // }
 
     try {
       const result = await createUser(form);
@@ -155,7 +155,7 @@ function NuevoCliente() {
             </Link>
           </div>
           <div className="col-6">
-            <button className="btn btn-primary w-75">
+            <button type="submit" className="btn btn-primary w-75">
               Agregar Cliente
             </button>
           </div>
