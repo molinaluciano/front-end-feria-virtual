@@ -14,21 +14,35 @@ function NuevoCliente() {
     apellidoMaterno: "",
     correo: "",
     contrasena: "",
-    rut: 0,
+    contrasenaconfirm: "",
+    rut: null,
     numeroIdentificador: "",
     direccion: "",
-    codigoPostal: 0,
-    telefono: 0, 
+    codigoPostal: null,
+    telefono: null, 
   });
 
   // VALIDARRRRRRRRR
   const validationForm = (formToValidate) => {
-    if (formToValidate.password === "" || formToValidate.email === "") {
+    if (formToValidate.idTipoUsuario === null || formToValidate.idPais === null
+      || formToValidate.nombre === "" || formToValidate.apellidoPaterno === ""
+      || formToValidate.apellidoMaterno === "" || formToValidate.correo === ""
+      || formToValidate.contrasena === "" || formToValidate.rut === null
+      || formToValidate.numeroIdentificador === "" || formToValidate.direccion === ""
+      || formToValidate.codigoPostal === null || formToValidate.telefono === null) {
       return false;
     }
 
     return true;
   };
+
+  const passwordValidation = (contrasena, contrasenaconfirm) => {
+    if(contrasena != contrasenaconfirm){
+      return false;
+    }
+
+    return true;
+  }
 
   const handleInputChange = (event) => {
     console.log(form);
@@ -40,28 +54,42 @@ function NuevoCliente() {
 
   const sendForm = async (event) => {
     event.preventDefault();
-    // if (!validationForm(form)) {
-    //   swal({
-    //     title: "Debe completar todos los campos!",
-    //     type: "error",
-    //     confirmButtonColor: "#3085d6",
-    //     confirmButtonText: "Ok",
-    //   });
+    if (!validationForm(form)) {
+      swal({
+        title: "Debe completar todos los campos!",
+        type: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok",
+      });
 
-    //   return;
-    // }
+      return;
+    }
+
+    if(!passwordValidation(form.contrasena, form.contrasenaconfirm)){
+      swal({
+        title: "Las contraseñas no coindiden!",
+        type: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok",
+      });
+
+      return;
+    }
 
     try {
       const result = await createUser(form);
       console.log("🚀 ~ file: Login.js ~ line 48 ~ sendForm ~ result", result);
-
-      const menuProfile = result.tipo_usuario_out.toLowerCase();
-
-      localStorage.setItem("PROFILE", menuProfile);
-      window.location.href = "/" + menuProfile;
+      swal({
+        title: "Usuario creado exitosamente!",
+        type: "error",
+        confirmButtonColor: "#3085d6",
+        confirmButtonText: "Ok",
+      }).then(() => {
+        window.location.href = "/administrador/gestionar-usuarios";
+      });
     } catch (error) {
       swal({
-        title: "El usuario no se ha encontrado!",
+        title: error,
         type: "error",
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Ok",
@@ -104,7 +132,7 @@ function NuevoCliente() {
             </div>
             <div class="col-6">
             <label for="inputConfirmPass">Confirmar Contraseña</label>
-            <input onChange={handleInputChange} type="password" class="form-control" id="inputConfirmPass" placeholder=""/>
+            <input onChange={handleInputChange} type="password" class="form-control" id="inputConfirmPass" name="contrasenaconfirm" placeholder=""/>
             </div>
           </div>
           <div class="row mb-2">
