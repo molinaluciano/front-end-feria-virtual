@@ -1,6 +1,7 @@
 module.exports = {
   endPoint: {
     login: "/login",
-    createuser: "/create-user"
+    createuser: "/create-user",
+    createcontract: "/create-contract"
   },
 };

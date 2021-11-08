@@ -1,13 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
 import swal from "sweetalert";
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { Link } from 'react-router-dom';
-import { createUser } from "../../../../service/clientes/cliente-externo/cliente_externo_service";
+import { createUser } from "../../../../service/Administrador/create-users-service";
 
 function NuevoCliente() {
   const [form, setHandleForm] = useState({
-    idTipoUsuario: 2,
+    idTipoUsuario: 2, // 2 - 3 - 4
     idPais: 1,
     nombre: "",
     apellidoPaterno: "",
@@ -22,7 +22,6 @@ function NuevoCliente() {
     telefono: null, 
   });
 
-  // VALIDARRRRRRRRR
   const validationForm = (formToValidate) => {
     if (formToValidate.idTipoUsuario === null || formToValidate.idPais === null
       || formToValidate.nombre === "" || formToValidate.apellidoPaterno === ""
@@ -77,7 +76,7 @@ function NuevoCliente() {
     }
 
     try {
-      const result = await createUser(form);
+      const result = await createUser(form, null);
       console.log("🚀 ~ file: Login.js ~ line 48 ~ sendForm ~ result", result);
       swal({
         title: "Usuario creado exitosamente!",
