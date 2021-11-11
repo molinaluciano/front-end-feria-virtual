@@ -89,7 +89,7 @@ function Routes() {
         <Route exact path="/productor" component={MenuProductor} />
         <Route exact path="/productor/gestionar-solicitudes/mis-solicitudes" component={MisSolicitudes} />
         <Route exact path="/productor/participar-solicitudes/solicitudes-disponibles" component={SolicitudesDisponibles} />
-        <Route exact path="/productor/participar-solicitudes/detalle-solicitud" component={DetalleSolicitudDisponible} />
+        <Route exact path="/productor/participar-solicitudes/detalle-solicitud/:id" component={DetalleSolicitudDisponible} />
 
         <Route exact path="/" component={Login} />
       </Switch>

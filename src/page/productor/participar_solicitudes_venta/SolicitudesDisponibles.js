@@ -20,7 +20,7 @@ function SolicitudesDisponibles() {
             <div class="card-body">
               <h5 class="card-title">ID: {request.idUsuario}</h5>
               <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-              <a href="/productor/participar-solicitudes/detalle-solicitud" class="btn btn-primary">Participar</a>
+              <a href={`/productor/participar-solicitudes/detalle-solicitud/${request.idSolicitud}`} class="btn btn-primary">Participar</a>
             </div>
           </div>
       </div>

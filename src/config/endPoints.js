@@ -4,6 +4,7 @@ module.exports = {
     createuser: "/create-user",
     createcontract: "/create-contract",
     createtruck: "/create-truck",
-    getrequestbystatus: "/requests"
+    getrequestbystatus: "/requests",
+    participateRequest: "/participate-in-request",
   },
 };
