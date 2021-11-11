@@ -73,14 +73,14 @@ function Routes() {
         <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta" component={ParticiparSubasta} />
 
         {/* ==== CLIENTE EXTERNO ===== */}
-        <Route exact path="/cliente-externo/mis-compras" component={MisCompras} />
-        <Route exact path="/cliente-externo/crear-solicitud" component={CrearSolicitud} />
+        <Route exact path="/cliente_externo" component={MisCompras} />
+        <Route exact path="/cliente_externo/crear-solicitud" component={CrearSolicitud} />
 
         {/* ==== CLIENTE INTERNO ===== */}
-        <Route exact path="/cliente-interno" component={MenuClienteInterno} />
+        <Route exact path="/cliente_interno" component={MenuClienteInterno} />
 
         {/* ==== CLIENTE LOCAL ===== */}
-        <Route exact path="/cliente-local" component={MenuClienteLocal} />
+        <Route exact path="/cliente_local" component={MenuClienteLocal} />
 
         {/* ==== CONSULTOR ===== */}
         <Route exact path="/consultor" component={MenuConsultor} />

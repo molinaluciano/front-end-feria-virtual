@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
-import { getRequestById } from "../../../service/Productor/get-requests"
+import { getRequestById } from "../../../service/get-requests"
 import { useState, useEffect } from "react";
 
 function SolicitudesDisponibles() {
