@@ -3,6 +3,7 @@ module.exports = {
     login: "/login",
     createuser: "/create-user",
     createcontract: "/create-contract",
-    createtruck: "/create-truck"
+    createtruck: "/create-truck",
+    getrequestbystatus: "/requests"
   },
 };

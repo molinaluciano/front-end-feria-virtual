@@ -21,7 +21,7 @@ import MisCamiones from "./page/transportista/gestionar-camiones/MisCamiones";
 import AgregarCamion from "./page/transportista/gestionar-camiones/AgregarCamion";
 import MisSubastas from "./page/transportista/gestionar-subastas/mis-subastas/MisSubastas";
 import GestionarSubastasTransportista from "./page/transportista/gestionar-subastas/MenuGestionarSubastas";
-import DetalleSubasta from "./page/transportista/gestionar-subastas/mis-subastas/DetalleSubasta";
+// import DetalleSubasta from "./page/transportista/gestionar-subastas/mis-subastas/DetalleSubasta";
 import ParticiparSubasta from "./page/transportista/gestionar-subastas/participar-subasta/ParticiparSubasta";
 import SubastasDisponibles from "./page/transportista/gestionar-subastas/participar-subasta/SubastasDisponibles";
 
