@@ -10,6 +10,7 @@ import GestionarProductores from "./page/administrador/gestionar-usuarios/gestio
 import GestionarVentas from "./page/administrador/gestionar-ventas/MenuGestionarVentas";
 import GestionarTransportistas from "./page/administrador/gestionar-usuarios/gestionar-transportistas/GestionarTransportistas";
 import NuevoCliente from "./page/administrador/gestionar-usuarios/gestionar-clientes/NuevoCliente";
+import EditarCliente from "./page/administrador/gestionar-usuarios/gestionar-clientes/EditarCliente";
 import NuevoProductor from "./page/administrador/gestionar-usuarios/gestionar-productores/NuevoProductor";
 import NuevoTransportista from "./page/administrador/gestionar-usuarios/gestionar-transportistas/NuevoTransportista";
 import AceptarSolicitudes from "./page/administrador/gestionar-ventas/aceptar-solicitudes-de-compra/AceptarSolicitudesDeCompra";
@@ -58,6 +59,7 @@ function Routes() {
         <Route exact path="/administrador/gestionar-usuarios/gestionar-productores" component={GestionarProductores} />
         <Route exact path="/administrador/gestionar-usuarios/gestionar-transportistas" component={GestionarTransportistas} />
         <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes/nuevo-cliente" component={NuevoCliente} />
+        <Route exact path="/administrador/gestionar-usuarios/gestionar-clientes/editar-cliente" component={EditarCliente} />
         <Route exact path="/administrador/gestionar-usuarios/gestionar-productores/nuevo-productor" component={NuevoProductor} />
         <Route exact path="/administrador/gestionar-usuarios/gestionar-transportistas/nuevo-transportista" component={NuevoTransportista} />
         <Route exact path="/administrador/gestionar-ventas" component={GestionarVentas} />
