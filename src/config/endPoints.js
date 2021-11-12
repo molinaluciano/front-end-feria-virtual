@@ -1,6 +1,7 @@
 module.exports = {
   endPoint: {
     login: '/login',
+    selectProducer: '/select-producer',
     selectCarrier: '/select-carrier',
     createuser: '/create-user',
     selectUser: '/select-user',
