@@ -44,8 +44,9 @@ function Login() {
       console.log("🚀 ~ file: Login.js ~ line 48 ~ sendForm ~ result", result);
 
       const menuProfile = result.tipo_usuario_out.toLowerCase();
-
+      const idUser = result.id_usuario_out;
       localStorage.setItem("PROFILE", menuProfile);
+      localStorage.setItem("IDUSER", idUser);
       window.location.href = "/" + menuProfile;
     } catch (error) {
       swal({

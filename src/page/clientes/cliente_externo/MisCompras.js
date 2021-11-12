@@ -10,7 +10,7 @@ function MisCompras() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          <Link to="/cliente-externo/crear-solicitud" className="list-group-item list-group-item-action">
+          <Link to="/cliente_externo/crear-solicitud" className="list-group-item list-group-item-action">
           Crear Solicitud
           </Link>
           <hr />

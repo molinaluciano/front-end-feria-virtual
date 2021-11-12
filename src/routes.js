@@ -22,7 +22,7 @@ import MisCamiones from "./page/transportista/gestionar-camiones/MisCamiones";
 import AgregarCamion from "./page/transportista/gestionar-camiones/AgregarCamion";
 import MisSubastas from "./page/transportista/gestionar-subastas/mis-subastas/MisSubastas";
 import GestionarSubastasTransportista from "./page/transportista/gestionar-subastas/MenuGestionarSubastas";
-import DetalleSubasta from "./page/transportista/gestionar-subastas/mis-subastas/DetalleSubasta";
+// import DetalleSubasta from "./page/transportista/gestionar-subastas/mis-subastas/DetalleSubasta";
 import ParticiparSubasta from "./page/transportista/gestionar-subastas/participar-subasta/ParticiparSubasta";
 import SubastasDisponibles from "./page/transportista/gestionar-subastas/participar-subasta/SubastasDisponibles";
 
@@ -75,14 +75,14 @@ function Routes() {
         <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta" component={ParticiparSubasta} />
 
         {/* ==== CLIENTE EXTERNO ===== */}
-        <Route exact path="/cliente-externo/mis-compras" component={MisCompras} />
-        <Route exact path="/cliente-externo/crear-solicitud" component={CrearSolicitud} />
+        <Route exact path="/cliente_externo" component={MisCompras} />
+        <Route exact path="/cliente_externo/crear-solicitud" component={CrearSolicitud} />
 
         {/* ==== CLIENTE INTERNO ===== */}
-        <Route exact path="/cliente-interno" component={MenuClienteInterno} />
+        <Route exact path="/cliente_interno" component={MenuClienteInterno} />
 
         {/* ==== CLIENTE LOCAL ===== */}
-        <Route exact path="/cliente-local" component={MenuClienteLocal} />
+        <Route exact path="/cliente_local" component={MenuClienteLocal} />
 
         {/* ==== CONSULTOR ===== */}
         <Route exact path="/consultor" component={MenuConsultor} />
@@ -91,7 +91,7 @@ function Routes() {
         <Route exact path="/productor" component={MenuProductor} />
         <Route exact path="/productor/gestionar-solicitudes/mis-solicitudes" component={MisSolicitudes} />
         <Route exact path="/productor/participar-solicitudes/solicitudes-disponibles" component={SolicitudesDisponibles} />
-        <Route exact path="/productor/participar-solicitudes/detalle-solicitud" component={DetalleSolicitudDisponible} />
+        <Route exact path="/productor/participar-solicitudes/detalle-solicitud/:id" component={DetalleSolicitudDisponible} />
 
         <Route exact path="/" component={Login} />
       </Switch>

@@ -2,6 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function SignOutComponent() {
   const signOut = () => {
     localStorage.removeItem("PROFILE");
+    localStorage.removeItem("IDUSER");
     window.location.href = "/";
   };
 
