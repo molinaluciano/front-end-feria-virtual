@@ -17,5 +17,7 @@ module.exports = {
     auctionparticipation: '/auction-participate',
     requestcreation: '/create-request-and-detail',
     updaterequeststatus: '/update-status-request',
+    getAuctionsByStatus: '/auctions-by-status',
+    getTrucksByCarrierId: '/select-truck-by-carrier',
   },
 }

@@ -27,3 +27,13 @@ export const createTruck = (form, idContrato) => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+export const getTrucksByCarrierId = (carrierId) => {
+  const endPoint = config.endPoint.getTrucksByCarrierId;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${carrierId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};

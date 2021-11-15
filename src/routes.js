@@ -72,7 +72,7 @@ function Routes() {
         <Route exact path="/transportista/gestionar-subastas" component={GestionarSubastasTransportista} />
         <Route exact path="/transportista/gestionar-subastas/mis-subastas" component={MisSubastas} />
         <Route exact path="/transportista/gestionar-subastas/participar-subastas" component={SubastasDisponibles} />
-        <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta" component={ParticiparSubasta} />
+        <Route exact path="/transportista/gestionar-subastas/participar-subastas/detalle-subasta/:id" component={ParticiparSubasta} />
 
         {/* ==== CLIENTE EXTERNO ===== */}
         <Route exact path="/cliente_externo" component={MisCompras} />

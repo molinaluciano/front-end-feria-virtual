@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../component/SignOutComponent";
-import { createTruck } from "../../../service/Transportista/create-truck";
+import { createTruck } from "../../../service/Transportista/trucks-service";
 import { Link } from 'react-router-dom';
 import {  useState } from "react";
 import swal from "sweetalert";

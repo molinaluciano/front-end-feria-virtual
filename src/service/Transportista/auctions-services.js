@@ -22,3 +22,13 @@ export const auctionParticipation = (form) => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+export const getAuctionsByStatus = (status) => {
+  const endPoint = config.endPoint.getAuctionsByStatus;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${status}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
