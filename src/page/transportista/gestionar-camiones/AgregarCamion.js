@@ -82,7 +82,7 @@ function AgregarCamion() {
         <form onSubmit={sendForm}>
           <div class="form-group mb-2">
             <label for="inputPatente">Patente</label>
-            <input onChange={handleInputChange} type="text" class="form-control" id="inputPatente" name placeholder=""/>
+            <input onChange={handleInputChange} type="text" class="form-control" id="inputPatente" name="patente" placeholder=""/>
           </div>
           <div class="row mb-2">
             <div class="col-6">
