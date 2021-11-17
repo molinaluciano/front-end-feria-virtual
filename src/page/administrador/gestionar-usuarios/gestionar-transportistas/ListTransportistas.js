@@ -7,7 +7,7 @@ import 'datatables.net-responsive'
 import { Link } from 'react-router-dom'
 
 import EditarTransportista from './EditarTransportista'
-import { getAllCarrier } from '../../../../service/Transportista/transportista-services'
+import { getAllCarrier } from '../../../../service/Transportista/transportista-service'
 
 function ListTransportistas() {
   const [listCarrier, setlistCarrier] = useState([])

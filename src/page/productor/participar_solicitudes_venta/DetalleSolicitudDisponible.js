@@ -3,7 +3,7 @@ import SignOutComponent from "../../../component/SignOutComponent";
 import { Link, useParams } from 'react-router-dom';
 import { useState } from "react";
 import swal from "sweetalert";
-import { requestParticipation } from "../../../service/Productor/participate-request"
+import { requestParticipation } from "../../../service/Productor/request-service"
 
 function DetalleSolicitudDisponible() {
   let { id } = useParams();

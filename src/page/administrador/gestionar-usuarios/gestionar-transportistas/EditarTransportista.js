@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {
   deleteUser,
   updateUser,
-} from '../../../../service/Administrador/getUsersService'
+} from '../../../../service/Administrador/users-service'
 import $ from 'jquery'
 import swal from 'sweetalert'
 import React, { useState, useEffect } from 'react'

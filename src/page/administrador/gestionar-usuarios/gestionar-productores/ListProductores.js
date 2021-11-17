@@ -7,7 +7,7 @@ import 'datatables.net-responsive'
 import { Link } from 'react-router-dom'
 
 import EditarProductor from './EditarProductor'
-import { getAllProducer } from '../../../../service/Productor/producto-service'
+import { getAllProducer } from '../../../../service/Productor/productor-service'
 
 function ListProductores() {
   const [listCarrier, setlistCarrier] = useState([])

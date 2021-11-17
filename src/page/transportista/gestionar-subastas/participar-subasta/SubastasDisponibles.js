@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
-import { getAuctionsByStatus } from "../../../../service/Transportista/auctions-services"
+import { getAuctionsByStatus } from "../../../../service/Transportista/auctions-service"
 import { useState, useEffect } from "react";
 
 function SubastasDisponibles() {

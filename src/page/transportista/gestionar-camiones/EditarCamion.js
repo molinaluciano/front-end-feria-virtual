@@ -5,7 +5,7 @@ import React, { useState, useEffect } from 'react'
 import {
   deleteTruck,
   updateTruck,
-} from '../../../service/Transportista/transportista-services'
+} from '../../../service/Transportista/trucks-service'
 
 const initialValues = {
   idTipoCamion: 0,

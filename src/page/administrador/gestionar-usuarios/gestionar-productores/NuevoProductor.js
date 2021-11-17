@@ -3,7 +3,7 @@ import SignOutComponent from "../../../../component/SignOutComponent";
 import swal from "sweetalert";
 import {  useState } from "react";
 import { Link } from 'react-router-dom';
-import { createContract, createUser } from "../../../../service/Administrador/create-users-service";
+import { createContract, createUser } from "../../../../service/Administrador/users-service";
 
 function NuevoProductor() {
   const [form, setHandleForm] = useState({

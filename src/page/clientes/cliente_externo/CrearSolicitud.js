@@ -3,7 +3,7 @@ import SignOutComponent from "../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
 import { useState } from "react";
 import swal from "sweetalert";
-import { requestCreation } from "../../../service/Cliente-Externo/create-request"
+import { requestCreation } from "../../../service/Cliente-Externo/request-service"
 
 function CrearSolicitud() {
   const [form, setHandleForm] = useState({

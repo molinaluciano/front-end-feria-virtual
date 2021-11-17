@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
 import MaterialTable from "material-table";
 import { getRequestById } from "../../../../service/get-requests"
-import { changeRequestStatus } from "../../../../service/Administrador/change-request-state"
+import { changeRequestStatus } from "../../../../service/Administrador/requests-service"
 import { useState, useEffect } from "react";
 import Check from '@material-ui/icons/Check';
 import DeleteOutline from '@material-ui/icons/DeleteOutline';

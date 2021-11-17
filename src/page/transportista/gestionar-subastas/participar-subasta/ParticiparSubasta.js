@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
 import { useParams } from 'react-router-dom';
-import { auctionParticipation } from "../../../../service/Transportista/auctions-services";
+import { auctionParticipation } from "../../../../service/Transportista/auctions-service";
 import { getTrucksByCarrierId } from "../../../../service/Transportista/trucks-service"
 import { useState, useEffect } from "react";
 import swal from "sweetalert";

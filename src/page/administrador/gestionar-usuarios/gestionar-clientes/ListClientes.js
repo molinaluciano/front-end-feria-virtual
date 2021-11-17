@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React, { useEffect, useState } from 'react'
-import { getOnlyClient } from '../../../../service/Administrador/getUsersService'
+import { getOnlyClient } from '../../../../service/Administrador/users-service'
 import $ from 'jquery'
 import 'datatables.net'
 import 'datatables.net-bs4'

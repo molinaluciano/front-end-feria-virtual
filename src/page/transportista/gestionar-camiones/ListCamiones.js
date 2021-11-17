@@ -7,7 +7,7 @@ import 'datatables.net-responsive'
 import { Link } from 'react-router-dom'
 
 import EditarCamion from './EditarCamion'
-import { getAllTruckByCarrier } from '../../../service/Transportista/transportista-services'
+import { getTrucksByCarrierId } from '../../../service/Transportista/trucks-service'
 
 function ListCamiones() {
   const [listTruck, setlistTruck] = useState([])
@@ -19,7 +19,7 @@ function ListCamiones() {
 
       let response = []
       try {
-        response = await getAllTruckByCarrier(idCarrier)
+        response = await getTrucksByCarrierId(idCarrier)
       } catch (error) {
         console.log(
           '🚀 ~ file: ListTransportistas.js ~ line 14 ~ fetchData ~ error',

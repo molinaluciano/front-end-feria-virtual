@@ -9,7 +9,7 @@ const instance = axios.create({
 });
 
 export const createTruck = (form, idContrato) => {
-  const endPoint = config.endPoint.createtruck;
+  const endPoint = config.endPoint.createTruck;
   return new Promise((resolve, reject) => {
     instance
       .post(endPoint, {
@@ -27,6 +27,41 @@ export const createTruck = (form, idContrato) => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+
+export const deleteTruck = async (id) => {
+  const endPoint = `${config.endPoint.deleteTruck}/${id}`
+
+  try {
+    const { data } = await instance.delete(endPoint)
+
+    return data
+  } catch (error) {
+    console.log(
+      '🚀 ~ file: transportista-services.js ~ line 51 ~ deleteTruck ~ error',
+      error,
+    )
+
+    return error.response.data
+  }
+}
+
+export const updateTruck = async (form) => {
+  const endPoint = config.endPoint.updateTruck
+
+  try {
+    const { data } = await instance.put(endPoint, form)
+    return data
+  } catch (error) {
+    console.log(
+      '🚀 ~ file: transportista-services.js ~ line 66 ~ updateTruck ~ error',
+      error,
+    )
+
+    return error.response.data
+  }
+}
+
 
 export const getTrucksByCarrierId = (carrierId) => {
   const endPoint = config.endPoint.getTrucksByCarrierId;

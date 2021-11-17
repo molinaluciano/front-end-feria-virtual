@@ -22,3 +22,23 @@ export const requestParticipation = (form) => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+export const allRequestDetails = () => {
+  const endPoint = config.endPoint.detailRequest;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const requestDetailsById = (requestId) => {
+  const endPoint = config.endPoint.detailRequest;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${requestId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
