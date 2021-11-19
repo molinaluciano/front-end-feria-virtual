@@ -119,7 +119,6 @@ function MenuAdministrador() {
       </header>
       <ul className="list-group mb-5">
         <li className="list-group-item">
-          {console.log(requests)}
           <MaterialTable
           columns={columns}
           data={requests}

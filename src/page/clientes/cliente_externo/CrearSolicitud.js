@@ -1,19 +1,46 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { requestCreation } from "../../../service/Cliente-Externo/request-service"
-
+import { getFruits, getFruitsTypes, getQualityTypes } from "../../../service/Cliente-Externo/request-service"
 function CrearSolicitud() {
+  const [fruits, setFruits] = useState([])
+  const [fruitTypes, setFruitTypes] = useState([])
+  const [qualities, setQualities] = useState([])
   const [form, setHandleForm] = useState({
     idUsuario: localStorage.getItem("IDUSER"),
     idTipoSolicitud: 2,
     kilos: 0,
-    idFruta: 10,
-    idCalidad: 2
+    idFruta: '',
+    idCalidad: 0
   });
 
+  const fetchData = async () => {
+    const fruitsTypesResponse = await getFruitsTypes();
+    const qualitiesResponse = await getQualityTypes();
+    setFruitTypes(fruitsTypesResponse);
+    setQualities(qualitiesResponse);
+  };
+
+  const displayFruits = fruits.map(fruit => {
+    return(
+      <option value={fruit.idFruta}>{fruit.nombreFruta}</option>
+    )
+  })
+
+  const displayCategoryFruit = fruitTypes.map(fruitType => {
+    return(
+      <option value={fruitType.idCategoriaFruta}>{fruitType.categoria}</option>
+    )
+  })
+
+  const displayQuality = qualities.map(quality => {
+    return(
+      <option value={quality.idCalidad}>{quality.calidad}</option>
+    )
+  })
   const handleInputChange = (event) => {
     console.log(form);
     setHandleForm({
@@ -21,6 +48,14 @@ function CrearSolicitud() {
       [event.target.name]: event.target.value,
     });
   };
+
+  const categorySelectChange = async (event) => {
+    const selectedVal = event.target.value;
+    const fruitsResponse = await getFruits();
+    const filteredFruits = fruitsResponse.filter(x => x.idCategoriaFruta == selectedVal);
+    setFruits(filteredFruits);
+
+  }
 
   const sendForm = async (event) => {
     event.preventDefault();
@@ -47,6 +82,10 @@ function CrearSolicitud() {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
 
   return (
     <div className="container">
@@ -58,13 +97,15 @@ function CrearSolicitud() {
           <form onSubmit={sendForm} class="mb-2">
             <div className="row mb-3">
               <div class="col-4">
-                <select class="form-control">
-                  <option>Categoría Fruta</option>
+                <select onChange={categorySelectChange} class="form-control">
+                  <option disabled selected>Categoría Fruta</option>
+                  {displayCategoryFruit}
                 </select>
               </div>
               <div class="col-4">
-                <select class="form-control">
-                  <option>Fruta</option>
+                <select onChange={handleInputChange} id="idFruta" name="idFruta" class="form-control">
+                  <option disabled selected>Seleccione Fruta</option>
+                  {displayFruits}
                 </select>
               </div>
               <div class="col-1">
@@ -73,6 +114,14 @@ function CrearSolicitud() {
               <div class="col-3">
                 <input onChange={handleInputChange} type="number" id="inputKg" name="kilos" class="form-control">
                 </input> 
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <select onChange={handleInputChange} id="idCalidad" name="idCalidad" class="form-control">
+                  <option disabled selected>Seleccione Calidad</option>
+                  {displayQuality}
+                </select>
               </div>
             </div>
             <button type="submit" className="list-group-item list-group-item-action">

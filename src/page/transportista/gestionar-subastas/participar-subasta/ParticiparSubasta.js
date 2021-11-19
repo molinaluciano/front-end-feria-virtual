@@ -18,7 +18,6 @@ function ParticiparSubasta() {
 
   const fetchData = async () => {
     const response = await getTrucksByCarrierId(id);
-    console.log(response)
     setTrucks(response);
   };
 

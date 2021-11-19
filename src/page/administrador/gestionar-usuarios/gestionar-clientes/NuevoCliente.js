@@ -1,13 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
 import swal from "sweetalert";
-import {  useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { createUser } from "../../../../service/Administrador/users-service";
+import { createUser, getUserTypes } from "../../../../service/Administrador/users-service";
 
 function NuevoCliente() {
+  const [userTypes, setUserTypes] = useState([])
   const [form, setHandleForm] = useState({
-    idTipoUsuario: 2, // 2 - 3 - 4
+    idTipoUsuario: 0,
     idPais: 1,
     nombre: "",
     apellidoPaterno: "",
@@ -21,6 +22,19 @@ function NuevoCliente() {
     codigoPostal: null,
     telefono: null, 
   });
+
+  const fetchData = async () => {
+    /// FALTA FETCH A PAISES
+    const userTypesResponse = await getUserTypes();
+    userTypesResponse.shift()
+    setUserTypes(userTypesResponse);
+  };
+
+  const displayUserTypes = userTypes.map((userType) => {
+    return(
+      <option value={userType.idTipoUsuario}>{userType.categoria}</option>
+    )
+  })
 
   const validationForm = (formToValidate) => {
     if (formToValidate.idTipoUsuario === null || formToValidate.idPais === null
@@ -98,6 +112,10 @@ function NuevoCliente() {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="container">
       <header className="App-header mb-3">
@@ -165,12 +183,13 @@ function NuevoCliente() {
           <div class="row mb-2 mt-4">
             <div class="col-6">
               <select class="form-control">
-                <option>Seleccione País</option>
+                <option disabled selected>Seleccione País</option>
               </select>
             </div>
             <div class="col-6">
-              <select class="form-control">
-                <option>Tipo Cliente</option>
+              <select onChange={handleInputChange} name="idTipoUsuario" id="idTipoUsuario" class="form-control">
+                <option disabled selected>Seleccione Tipo de Usuario</option>
+                {displayUserTypes}
               </select>
             </div>
           </div>

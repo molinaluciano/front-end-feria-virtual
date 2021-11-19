@@ -16,9 +16,40 @@ export const requestCreation = (form) => {
         idUsuario: form.idUsuario,
         idTipoSolicitud: form.idTipoSolicitud,
         kilos: parseInt(form.kilos),
-        idFruta: form.idFruta,
-        idCalidad: form.idCalidad
+        idFruta: parseInt(form.idFruta),
+        idCalidad: parseInt(form.idCalidad)
       })
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getFruits = () => {
+  const endPoint = config.endPoint.selectFruit;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+
+export const getFruitsTypes = () => {
+  const endPoint = config.endPoint.selectCategoryFruit;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getQualityTypes = () => {
+  const endPoint = config.endPoint.selectQualityFruit;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
   });

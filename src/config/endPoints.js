@@ -22,6 +22,19 @@ module.exports = {
     salesByPayType: "/sales-by-pay-type",
     salesByRequest: "/sales-by-request",
     selectProducer: '/select-producer',
+    selectQualityFruit: "/select-quality-fruit",
+    selectCategoryFruit: "/select-category-fruit",
+    selectStatusContract: "/select-status-contract",
+    selectStatusRequest: "/select-status-request",
+    selectStatusAuction: "/select-status-auction",
+    selectStatusSale: "/select-status-sale",
+    selectFruit: "/select-fruit",
+    selectTruckSize: "/select-truck-size",
+    selectTruckType: "/select-truck-type",
+    selectTruckType: "/select-pay-type",
+    selectRequestType: "/select-request-type",
+    selectUserType: "/select-user-type",
+    selectStaticValues: "/select-static-values",
     selectCarrier: '/select-carrier',
     selectUser: '/select-user',
     updateUser: '/update-user',
@@ -30,3 +43,18 @@ module.exports = {
     updateRequestStatus: '/update-status-request',
   },
 }
+
+
+// /select-quality-fruit/1
+// /select-category-fruit/1
+// /select-status-contract/1
+// /select-status-request/0
+// /select-status-auction/1
+// /select-status-sale/1
+// /select-fruit/1
+// /select-truck-size/1
+// /select-truck-type/1
+// /select-pay-type/1
+// /select-request-type/1
+// /select-user-type/1
+// /select-static-values/1

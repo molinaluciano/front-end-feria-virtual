@@ -75,13 +75,24 @@ export const updateUser = async (form) => {
   }
 }
 
+export const getUserTypes = () => {
+  const endPoint = config.endPoint.selectUserType;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+
 export const createUser = (form, idContrato) => {
     const endPoint = config.endPoint.createUser;
     return new Promise((resolve, reject) => {
       instance
         .post(endPoint, {
           idUsuario: null,
-          idTipoUsuario: form.idTipoUsuario,
+          idTipoUsuario: parseInt(form.idTipoUsuario),
           idPais: form.idPais,
           nombre: form.nombre,
           apellidoPaterno: form.apellidoPaterno,
