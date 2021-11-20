@@ -1,18 +1,62 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../component/SignOutComponent";
 import { Link, useParams } from 'react-router-dom';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import swal from "sweetalert";
-import { requestParticipation } from "../../../service/Productor/request-service"
+import { 
+requestParticipation, 
+requestDetailsById, 
+getRequestById, 
+getQualityTypeById, 
+getUserById,
+getFruitById,
+ } from "../../../service/Productor/request-service"
 
 function DetalleSolicitudDisponible() {
   let { id } = useParams();
 
+  const [requestDetail, setRequest] = useState({
+    fruta: "",
+    kilos: 0,
+    quality: "",
+    customerName: "",
+    customerPhone: 0,
+    customerMail: ""
+  })
   const [form, setHandleForm] = useState({
       precio: 0,
       idSolicitud: id,
       idProductor: localStorage.getItem('IDUSER'),
   });
+
+  const fetchData = async () => {
+    const requestDetailResponse = await requestDetailsById(id);
+    const requestId = requestDetailResponse[0].idSolicitud;
+    const getRequestByIdResponse = await getRequestById(requestId)
+    const qualityId = getRequestByIdResponse[0].detallesSolicitud[0].idCalidad
+    const userId = getRequestByIdResponse[0].idUsuario;
+    const fruitId = getRequestByIdResponse[0].detallesSolicitud[0].idFruta;
+    const qualityResponse = await getQualityTypeById(qualityId);
+    const userInformation = await getUserById(userId);
+    const fruitResponse = await getFruitById(fruitId);
+
+    const kilos = getRequestByIdResponse[0].detallesSolicitud[0].kilos
+    const quality = qualityResponse.calidad;
+    const customerName = `${userInformation.nombre} ${userInformation.apellidoPaterno} ${userInformation.apellidoMaterno}`
+    const customerPhone = userInformation.telefono;
+    const customerMail = userInformation.correo;
+    const fruta = fruitResponse.nombreFruta;
+
+    setRequest({
+      fruta: fruta,
+      kilos: kilos,
+      quality: quality,
+      customerName: customerName,
+      customerPhone: customerPhone,
+      customerMail: customerMail
+    })
+
+  } 
 
   const handleInputChange = (event) => {
     console.log(form);
@@ -47,11 +91,22 @@ function DetalleSolicitudDisponible() {
     }
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="container">
       <header className="App-header">
         <h1>Detalle Solicitud N*{id}</h1>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Nombre Cliente: {requestDetail.customerName}</li>
+            <li class="list-group-item">Mail Cliente: {requestDetail.customerMail}</li>
+            <li class="list-group-item">Teléfono Cliente: {requestDetail.customerPhone}</li>
+            <li class="list-group-item">Fruta Solicitada: {requestDetail.fruta}</li>
+            <li class="list-group-item">Calidad de la Fruta: {requestDetail.quality}</li>
+            <li class="list-group-item">Kilos de Fruta: {requestDetail.kilos}</li>
+          </ul>
       </header>
       <ul className="list-group mb-5">
         <form onSubmit={sendForm}>

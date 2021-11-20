@@ -3,23 +3,65 @@ import SignOutComponent from "../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
 import { getRequestById } from "../../../service/get-requests"
 import { useState, useEffect } from "react";
+import { 
+  requestParticipation, 
+  requestDetailsById, 
+  getQualityTypeById, 
+  getUserById,
+  getFruitById,
+   } from "../../../service/Productor/request-service"
 
 function SolicitudesDisponibles() {
   const [requests, setRequests] = useState([])
 
   const fetchData = async () => {
     const response = await getRequestById(3);
-    console.log(response)
-    setRequests(response);
+    console.log('response', response)
+
+    const requestsInfo = response.map((x) => {
+      return({
+        idUsuario: x.idUsuario,
+        idFruta: x.detallesSolicitud[0].idFruta,
+        idCalidad: x.detallesSolicitud[0].idCalidad,
+        idSolicitud: x.idSolicitud
+      })
+    }); 
+    
+    const requestDetails = []
+
+    const pushToArr = async (x) => {
+      const userInformation = await getUserById(x.idUsuario);
+      const fruitResponse = await getFruitById(x.idFruta);
+      const qualityResponse = await getQualityTypeById(x.idCalidad);
+      
+      let req = {
+        customerName: `${userInformation.nombre} ${userInformation.apellidoPaterno} ${userInformation.apellidoMaterno}`,
+        fruitName: fruitResponse.nombreFruta,
+        quality: qualityResponse.calidad,
+        idSolicitud: x.idSolicitud
+      }
+
+      return req;
+    }
+
+    for (const request of requestsInfo) {
+      requestDetails.push(pushToArr(request))
+    }
+    
+    Promise.all(requestDetails).then(values => {
+      setRequests(values);
+    })
   };
 
+  console.log(requests)
   const displayRequests = requests.map((request) => {
     return(
       <div class="col-sm-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">ID: {request.idUsuario}</h5>
-              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <h5 class="card-title">{request.fruitName}</h5>
+              <p class="card-text">Cliente: {request.customerName}</p>
+              <p class="card-text">Calidad Fruta: {request.quality}</p>
               <a href={`/productor/participar-solicitudes/detalle-solicitud/${request.idSolicitud}`} class="btn btn-primary">Participar</a>
             </div>
           </div>

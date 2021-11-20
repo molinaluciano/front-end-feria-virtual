@@ -33,6 +33,16 @@ export const allRequestDetails = () => {
   });
 };
 
+export const getRequestById = (requestId) => {
+  const endPoint = config.endPoint.getRequestById;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${requestId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
 export const requestDetailsById = (requestId) => {
   const endPoint = config.endPoint.detailRequest;
   return new Promise((resolve, reject) => {
@@ -42,3 +52,37 @@ export const requestDetailsById = (requestId) => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+export const getQualityTypeById = (id) => {
+  const endPoint = config.endPoint.selectQualityFruit;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${id}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getUserById = (id) => {
+  const endPoint = config.endPoint.selectUserById;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${id}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getFruitById = (id) => {
+  const endPoint = config.endPoint.selectFruit;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${id}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+
+
+
