@@ -1,8 +1,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
-
+import { getRequestsByClient } from "../../../service/get-requests"
+import { useEffect } from "react";
 function MisCompras() {
+  let { id } = localStorage.getItem('IDUSER')
+  const fetchData = async () => {
+    /// FALTA FETCH A PAISES
+    const userRequestResult = await getRequestsByClient(id);
+    console.log(userRequestResult)
+    // userTypesResponse.shift()
+    // setUserTypes(userTypesResponse);
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="container">
       <header className="App-header">

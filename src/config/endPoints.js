@@ -7,6 +7,7 @@ module.exports = {
     createContract: '/create-contract',
     createUser: '/create-user',
     createTruck: '/create-truck',
+    getCountries: '/country', 
     deleteUser: '/delete-user',
     deleteTruck: '/delete-truck',
     detailRequest: "/detail-requests",

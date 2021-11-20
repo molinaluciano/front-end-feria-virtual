@@ -3,13 +3,14 @@ import SignOutComponent from "../../../../component/SignOutComponent";
 import swal from "sweetalert";
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
-import { createUser, getUserTypes } from "../../../../service/Administrador/users-service";
+import { createUser, getUserTypes, getCountries } from "../../../../service/Administrador/users-service";
 
 function NuevoCliente() {
+  const [countries, setCountries] = useState([])
   const [userTypes, setUserTypes] = useState([])
   const [form, setHandleForm] = useState({
     idTipoUsuario: 0,
-    idPais: 1,
+    idPais: 0,
     nombre: "",
     apellidoPaterno: "",
     apellidoMaterno: "",
@@ -25,16 +26,25 @@ function NuevoCliente() {
 
   const fetchData = async () => {
     /// FALTA FETCH A PAISES
+    const countriesResponse = await getCountries();
     const userTypesResponse = await getUserTypes();
     userTypesResponse.shift()
+    setCountries(countriesResponse)
     setUserTypes(userTypesResponse);
   };
+
+  const displayCountries = countries.map(contry => {
+    return(
+      <option value={contry.idPais}>{contry.nombre}</option>
+    )
+  }) 
 
   const displayUserTypes = userTypes.map((userType) => {
     return(
       <option value={userType.idTipoUsuario}>{userType.categoria}</option>
     )
   })
+
 
   const validationForm = (formToValidate) => {
     if (formToValidate.idTipoUsuario === null || formToValidate.idPais === null
@@ -182,8 +192,9 @@ function NuevoCliente() {
           </div>
           <div class="row mb-2 mt-4">
             <div class="col-6">
-              <select class="form-control">
+              <select onChange={handleInputChange} name="idPais" id="idPais" class="form-control">
                 <option disabled selected>Seleccione País</option>
+                {displayCountries}
               </select>
             </div>
             <div class="col-6">

@@ -8,6 +8,16 @@ const instance = axios.create({
   baseURL: API_URL,
 })
 
+export const getCountries = () => {
+  const endPoint = config.endPoint.getCountries
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)))
+  })
+}
+
 export const getUserByIdType = (idType) => {
   const endPoint = `${config.endPoint.selectUser}/${idType}`
   return new Promise((resolve, reject) => {
@@ -93,7 +103,7 @@ export const createUser = (form, idContrato) => {
         .post(endPoint, {
           idUsuario: null,
           idTipoUsuario: parseInt(form.idTipoUsuario),
-          idPais: form.idPais,
+          idPais: parseInt(form.idPais),
           nombre: form.nombre,
           apellidoPaterno: form.apellidoPaterno,
           apellidoMaterno: form.apellidoMaterno,

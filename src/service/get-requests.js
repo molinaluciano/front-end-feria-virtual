@@ -9,7 +9,7 @@ const instance = axios.create({
 });
 
 export const getRequestById = (id) => {
-  const endPoint = config.endPoint.getrequestbystatus;
+  const endPoint = config.endPoint.getRequestBystatus;
   return new Promise((resolve, reject) => {
     instance
       .get(`${endPoint}/${id}`)
@@ -17,3 +17,28 @@ export const getRequestById = (id) => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+export const getAllRequests = () => {
+  const endPoint = config.endPoint.getRequestBystatus;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getRequestsByClient = async (clientId) => {
+  try{
+    const result = await getAllRequests();
+    console.log(JSON.stringify(result), 'stringufy')
+    console.log(result, 'asdas')
+    // const clientRequest = result.filter(x => x.idUsuario = clientId)
+    // return clientRequest  
+  }catch(err){
+    console.log(err);
+  }
+  
+}
+
+
