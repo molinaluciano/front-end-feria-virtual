@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../../component/SignOutComponent";
 import MaterialTable from "material-table";
-import { getRequestById } from "../../../../service/get-requests"
+import { getRequestById } from "../../../../service/global-request"
 import { changeRequestStatus } from "../../../../service/Administrador/requests-service"
+import { getUserById } from "../../../../service/Productor/request-service" /// // // //
 import { useState, useEffect } from "react";
 import Check from '@material-ui/icons/Check';
 import DeleteOutline from '@material-ui/icons/DeleteOutline';
@@ -11,11 +12,15 @@ import { forwardRef } from 'react';
 import swal from "sweetalert";
 
 function MenuAdministrador() {
+  const id = localStorage.getItem("IDUSER")
   const [requests, setRequests] = useState([])
 
   const fetchData = async () => {
     try{
       const response = await getRequestById(0);
+
+      const getUser = await getUserById(id)
+      console.log('getUser', getUser)
       setRequests(response);
     }catch(error){
 

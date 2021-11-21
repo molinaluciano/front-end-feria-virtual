@@ -54,3 +54,13 @@ export const getQualityTypes = () => {
       .catch((error) => reject(new Error(error)));
   });
 };
+
+export const getRequestByClientId = (clientId) => {
+  const endPoint = config.endPoint.selectRequestByClientId;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${clientId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};

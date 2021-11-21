@@ -35,6 +35,7 @@ module.exports = {
     selectTruckType: "/select-truck-type",
     selectTruckType: "/select-pay-type",
     selectRequestType: "/select-request-type",
+    selectRequestByClientId: "/requests-by-client",
     selectUserType: "/select-user-type",
     selectUserById: "/select-user-by-id",
     selectStaticValues: "/select-static-values",

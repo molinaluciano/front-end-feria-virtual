@@ -28,17 +28,12 @@ export const getAllRequests = () => {
   });
 };
 
-export const getRequestsByClient = async (clientId) => {
-  try{
-    const result = await getAllRequests();
-    console.log(JSON.stringify(result), 'stringufy')
-    console.log(result, 'asdas')
-    // const clientRequest = result.filter(x => x.idUsuario = clientId)
-    // return clientRequest  
-  }catch(err){
-    console.log(err);
-  }
-  
-}
-
-
+export const requestDetailsById = (requestId) => {
+  const endPoint = config.endPoint.detailRequest;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${requestId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};

@@ -64,7 +64,7 @@ export const getQualityTypeById = (id) => {
 };
 
 export const getUserById = (id) => {
-  const endPoint = config.endPoint.selectUserById;
+  const endPoint = config.endPoint.selectUserById; // // //
   return new Promise((resolve, reject) => {
     instance
       .get(`${endPoint}/${id}`)

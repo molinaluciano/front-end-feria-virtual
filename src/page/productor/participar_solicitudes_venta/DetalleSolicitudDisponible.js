@@ -5,13 +5,12 @@ import { useState, useEffect } from "react";
 import swal from "sweetalert";
 import { 
 requestParticipation, 
-requestDetailsById, 
 getRequestById, 
 getQualityTypeById, 
 getUserById,
 getFruitById,
- } from "../../../service/Productor/request-service"
-
+} from "../../../service/Productor/request-service"
+import { requestDetailsById } from "../../../service/global-request" 
 function DetalleSolicitudDisponible() {
   let { id } = useParams();
 

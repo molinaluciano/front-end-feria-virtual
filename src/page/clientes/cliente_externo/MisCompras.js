@@ -1,17 +1,63 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import SignOutComponent from "../../../component/SignOutComponent";
 import { Link } from 'react-router-dom';
-import { getRequestsByClient } from "../../../service/get-requests"
-import { useEffect } from "react";
+import { getRequestByClientId } from "../../../service/Cliente-Externo/request-service"
+import { getFruitById, getQualityTypeById } from "../../../service/Productor/request-service"
+import { useEffect, useState } from "react";
+
 function MisCompras() {
-  let { id } = localStorage.getItem('IDUSER')
+  let id = localStorage.getItem('IDUSER')
+  const [requests, setRequests] = useState([])
+  
+  // 
+  //
+  //    TERMINAR DE TRAER DATOS DE LAS VENTAS X CLIENTE, PRODUCTOR SELECCIONADO, PRECIO FINAL, ETC
+  //
+  //
   const fetchData = async () => {
-    /// FALTA FETCH A PAISES
-    const userRequestResult = await getRequestsByClient(id);
-    console.log(userRequestResult)
-    // userTypesResponse.shift()
-    // setUserTypes(userTypesResponse);
+    const userRequestResult = await getRequestByClientId(id);
+    const userRequestsInfo = userRequestResult.map((x) => {
+      return({
+        idCalidad: x.detallesSolicitud[0].idCalidad,
+        idFruta: x.detallesSolicitud[0].idFruta,
+        idSolicitud: x.idSolicitud,
+        kilos: x.detallesSolicitud[0].kilos
+      })
+    })
+
+    const requestsByClientId = userRequestsInfo.map(x => x.idSolicitud) 
+      
+    const userRequestsDetails = []
+    const userSalesDetails = []
+
+    const requestDetails = async (x) => {
+      const fruitResponse = await getFruitById(x.idFruta);
+      const qualityResponse = await getQualityTypeById(x.idCalidad);
+      
+      let req = {
+        fruitName: fruitResponse.nombreFruta,
+        quality: qualityResponse.calidad,
+        idSolicitud: x.idSolicitud,
+        kilos: x.kilos
+      }
+      
+      return req;
+    }
+
+    const salesDetails = async (x) => {
+      
+    }
+    
+    for (const request of userRequestsInfo) {
+      userRequestsDetails.push(requestDetails(request))
+    }
+    
+    Promise.all(userRequestsDetails).then(values => {
+      setRequests(values);
+    })
   };
+  
+  console.log(requests)
 
   useEffect(() => {
     fetchData();
