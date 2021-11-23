@@ -45,6 +45,9 @@ import MenuProductor from "./page/productor/MenuProductor";
 import MisSolicitudes from "./page/productor/gestionar_solicitudes_venta/MisSolicitudes";
 import SolicitudesDisponibles from "./page/productor/participar_solicitudes_venta/SolicitudesDisponibles";
 import DetalleSolicitudDisponible from "./page/productor/participar_solicitudes_venta/DetalleSolicitudDisponible";
+import GestionarSaldos from "./page/administrador/gestionar-saldos/GestionarSaldos";
+import ListSaldos from "./page/administrador/gestionar-saldos/ListSaldos";
+import NuevoSaldo from "./page/administrador/gestionar-saldos/NuevoSaldo";
 // import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
 
 
@@ -64,6 +67,9 @@ function Routes() {
         <Route exact path="/administrador/gestionar-usuarios/gestionar-transportistas/nuevo-transportista" component={NuevoTransportista} />
         <Route exact path="/administrador/gestionar-ventas" component={GestionarVentas} />
         <Route exact path="/administrador/gestionar-ventas/aceptar-solicitudes" component={AceptarSolicitudes} />
+        <Route exact path="/administrador/gestionar-saldos" component={GestionarSaldos} />
+        <Route exact path="/administrador/gestionar-saldos/nuevo-saldo" component={NuevoSaldo} />
+        <Route exact path="/administrador/gestionar-saldos/historial" component={ListSaldos} />
 
         {/* ==== TRANSPORTISTA ===== */}
         <Route exact path="/transportista" component={MenuTransportista} />
