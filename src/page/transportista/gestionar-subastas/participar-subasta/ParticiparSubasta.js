@@ -8,16 +8,16 @@ import swal from "sweetalert";
 
 function ParticiparSubasta() {
   let { id } = useParams();
-
+  let carrierId = localStorage.getItem('IDUSER')
   const [trucks, setTrucks] = useState([])
   const [form, setForm] = useState({
     idSubasta: id,
     precio: 0,
-    idCamion: ""
+    idCamion: 0
   })
 
   const fetchData = async () => {
-    const response = await getTrucksByCarrierId(id);
+    const response = await getTrucksByCarrierId(carrierId);
     setTrucks(response);
   };
 

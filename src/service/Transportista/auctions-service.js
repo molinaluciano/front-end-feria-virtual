@@ -9,6 +9,7 @@ const instance = axios.create({
 });
 
 export const auctionParticipation = (form) => {
+  console.log('form-service-received', form)
   const endPoint = config.endPoint.auctionParticipation;
   return new Promise((resolve, reject) => {
     instance

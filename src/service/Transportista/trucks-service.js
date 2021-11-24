@@ -8,20 +8,22 @@ const instance = axios.create({
   baseURL: API_URL,
 });
 
-export const createTruck = (form, idContrato) => {
+export const createTruck = (form) => {
+  console.log('form-service-received', form)
   const endPoint = config.endPoint.createTruck;
+
   return new Promise((resolve, reject) => {
     instance
       .post(endPoint, {
         idCamion: null,
-        idTipoCamion: 1,
+        idTipoCamion: parseInt(form.idTipoCamion),
         idTamanoCamion: 1,
-        patente: "pat3nt3EDF",
-        modelo: "modelo 1",
-        marca: "BWW",
-        revisionTecnica: 1,
-        idTransportista: 1,
-        disponibilidad: 1
+        patente: form.patente,
+        modelo: form.modelo,
+        marca: form.marca,
+        revisionTecnica: parseInt(form.revisionTecnica),
+        idTransportista: parseInt(form.idTransportista),
+        disponibilidad: form.disponibilidad
       })
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
@@ -62,12 +64,21 @@ export const updateTruck = async (form) => {
   }
 }
 
-
 export const getTrucksByCarrierId = (carrierId) => {
   const endPoint = config.endPoint.getTrucksByCarrierId;
   return new Promise((resolve, reject) => {
     instance
       .get(`${endPoint}/${carrierId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getTrucksTypes = () => {
+  const endPoint = config.endPoint.selectTruckType;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(endPoint)
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
   });

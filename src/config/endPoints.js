@@ -33,7 +33,7 @@ module.exports = {
     selectFruit: "/select-fruit",
     selectTruckSize: "/select-truck-size",
     selectTruckType: "/select-truck-type",
-    selectTruckType: "/select-pay-type",
+    selectSaleByPayType: "/select-pay-type",
     selectRequestType: "/select-request-type",
     selectRequestByClientId: "/requests-by-client",
     selectUserType: "/select-user-type",
