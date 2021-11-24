@@ -1,4 +1,5 @@
 module.exports = {
+<<<<<<< HEAD
   endPoint: {
     auctions: "/auctions",
     auctionsByRequest: "/auctions-by-requests",
