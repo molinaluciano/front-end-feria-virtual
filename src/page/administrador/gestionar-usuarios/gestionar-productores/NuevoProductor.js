@@ -77,6 +77,7 @@ function NuevoProductor() {
     }
 
     try {
+      console.log(form)
       const resultContract = await createContract(form);
       const idContrato = parseInt(resultContract.id);
       console.log(idContrato)
@@ -88,7 +89,7 @@ function NuevoProductor() {
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Ok",
       }).then(() => {
-        window.location.href = "/administrador/gestionar-usuarios";
+        // window.location.href = "/administrador/gestionar-usuarios";
       });
     } catch (error) {
       swal({
@@ -97,7 +98,7 @@ function NuevoProductor() {
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Ok",
       }).then(() => {
-        window.location.href = "/";
+        // window.location.href = "/";
       });
     }
   };

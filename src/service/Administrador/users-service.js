@@ -122,7 +122,7 @@ export const createUser = (form, idContrato) => {
   };
   
   export const createContract = (form) => {
-    const endPoint = config.endPoint.createcontract;
+    const endPoint = config.endPoint.createContract;
     return new Promise((resolve, reject) => {
       instance
         .post(endPoint, {
