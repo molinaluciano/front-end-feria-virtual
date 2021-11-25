@@ -25,6 +25,7 @@ function ListSaldos() {
                 data.idCalidad,
                 data.disponible,
                 data.idCliente,
+                data.precio,
                 [
                     data.idSaldo + '!!!!',
                     data.kilos + '!!!!',
@@ -62,7 +63,7 @@ function ListSaldos() {
                         { title: 'Calidad' },
                         { title: 'Disponible' },
                         { title: 'ID Cliente' },
-                        
+                        { title: 'Precio' },
                     ],
                 });
 
@@ -86,15 +87,13 @@ function ListSaldos() {
             try {
                 response = await getAllBalance();
             } catch (error) {
-               throw new Error(error)
+                throw new Error(error);
             }
             setForm(response);
             await loadData();
         };
         fetchData();
     }, []);
-
-
 
     loadData();
 
@@ -117,8 +116,6 @@ function ListSaldos() {
                     <div className='row'>
                         <div className='col-lg-12'>
                             <div className='card card-primary card-outline'>
-                               
-
                                 <div className='card-body'>
                                     <table
                                         className='table table-striped dt-responsive'
@@ -127,18 +124,17 @@ function ListSaldos() {
                                 </div>
 
                                 <ul className='list-group mb-5'>
-                <li className='list-group-item'>
-                    
-                    <Link
-                        to='/administrador/gestionar-saldos'
-                        className='list-group-item list-group-item-action'
-                    >
-                        Ir hacia atrás
-                    </Link>
-                    <hr />
-                    <SignOutComponent />
-                </li>
-            </ul>
+                                    <li className='list-group-item'>
+                                        <Link
+                                            to='/administrador/gestionar-saldos'
+                                            className='list-group-item list-group-item-action'
+                                        >
+                                            Ir hacia atrás
+                                        </Link>
+                                        <hr />
+                                        <SignOutComponent />
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

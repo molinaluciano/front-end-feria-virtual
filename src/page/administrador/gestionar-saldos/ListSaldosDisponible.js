@@ -23,13 +23,15 @@ function ListSaldosDisponibles() {
                 data.kilos,
                 data.idFruta,
                 data.idCalidad,
+                data.precio,
                 [
                     data.idSaldo + '!!!!',
                     data.kilos + '!!!!',
                     data.disponible + '!!!!',
                     data.idCliente + '!!!!',
                     data.idFruta + '!!!!',
-                    data.idCalidad,
+                    data.idCalidad + '!!!!',
+                    data.precio,
                 ],
             ];
         });
@@ -56,6 +58,7 @@ function ListSaldosDisponibles() {
                         { title: 'Kilos' },
                         { title: 'Fruta' },
                         { title: 'Calidad' },
+                        { title: 'Precio' },
                         {
                             title: 'Acciones',
                             render: function (data, arr) {
@@ -107,7 +110,6 @@ function ListSaldosDisponibles() {
         fetchData();
     }, []);
 
- 
     loadData();
 
     return (
@@ -151,7 +153,7 @@ function ListSaldosDisponibles() {
                     </div>
                 </div>
             </div>
-            <EditarSaldo/>
+            <EditarSaldo />
         </div>
     );
 }
