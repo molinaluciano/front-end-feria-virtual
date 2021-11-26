@@ -51,6 +51,8 @@ module.exports = {
         createBalance: '/create-balance',
         updateBalance: '/update-balance',
         deleteBalance: '/delete-balance/',
+        getPayType: '/select-pay-type',
+        getStatusSale: '/select-status-sale',
     },
 };
 
