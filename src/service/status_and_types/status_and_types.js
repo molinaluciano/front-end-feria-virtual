@@ -29,3 +29,26 @@ export const getStatusSales = async () => {
         throw new Error(error);
     }
 };
+
+// REQUESTS STATES
+export const getTypeRequest = async () => {
+    const endPoint = config.endPoint.selectRequestType;
+
+    try {
+        const { data } = await instance.get(endPoint);
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+};
+
+export const getStatusRequest = async () => {
+    const endPoint = config.endPoint.selectStatusRequest;
+
+    try {
+        const { data } = await instance.get(endPoint);
+        return data;
+    } catch (error) {
+        throw new Error(error);
+    }
+};

@@ -50,6 +50,7 @@ import NuevoSaldo from './page/administrador/gestionar-saldos/NuevoSaldo';
 import MenuHistorial from './component/historialClientes/MenuHistorial';
 import HistorialSolicitudes from './component/historialClientes/HistorialSolicitudes';
 import HistorialVentas from './component/historialClientes/HistorialVentas';
+import DetalleSolicitudes from './component/historialClientes/DetalleSolicitudes';
 // import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
 
 function Routes() {
@@ -186,6 +187,11 @@ function Routes() {
                     exact
                     path='/cliente/historial/ventas'
                     component={HistorialVentas}
+                />
+                <Route
+                    exact
+                    path='/cliente/historial/solicitudes/:idSolicitud'
+                    component={DetalleSolicitudes}
                 />
 
                 {/* ==== CLIENTE INTERNO ===== */}

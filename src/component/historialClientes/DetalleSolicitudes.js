@@ -1,19 +1,21 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../SignOutComponent';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 import $ from 'jquery';
-import { getRequestByClientId } from '../../service/Cliente-Externo/request-service';
 import {
-    getStatusRequest,
-    getTypeRequest,
-} from '../../service/status_and_types/status_and_types';
+    getFruits,
+    getQualityTypes,
+    getRequestByClientId,
+} from '../../service/Cliente-Externo/request-service';
 
-function HistorialSolicitudes(props) {
+function DetalleSolicitudes(props) {
+    const { idSolicitud } = useParams();
+
     const [request, setRequest] = useState([]);
-    const [types, setTypes] = useState([]);
-    const [status, setStatus] = useState([]);
+    const [fruit, setFruit] = useState([]);
+    const [quality, setQuality] = useState([]);
 
     let history = useHistory();
     const goToPreviousPath = () => {
@@ -24,12 +26,18 @@ function HistorialSolicitudes(props) {
 
     const fetchData = async () => {
         const allRequest = await getRequestByClientId(id);
-        const typeRequest = await getTypeRequest();
-        const statusRequest = await getStatusRequest();
+        const AllDetails = allRequest
+            .filter((request) => {
+                return request.idSolicitud === Number(idSolicitud);
+            })
+            .map((request) => request.detallesSolicitud)[0];
 
-        setStatus(statusRequest);
-        setTypes(typeRequest);
-        setRequest(allRequest);
+        const fruitType = await getFruits();
+        const qualityType = await getQualityTypes();
+
+        setFruit(fruitType);
+        setQuality(qualityType);
+        setRequest(AllDetails);
         await loadData();
     };
 
@@ -41,21 +49,19 @@ function HistorialSolicitudes(props) {
         // CARGAR DATA SET
         const dataSet = [];
         request.forEach((data, index) => {
-            const typeRequest = types.find(
-                (type) => type.idTipoSolicitud === data.idTipoSolicitud
-            ).descripcion;
-
-            const statusRequest = status.find(
-                (statu) => statu.idEstadoSolicitud === data.idEstadoSolicitud
-            ).descripcion;
+            const fruitName = fruit.find(
+                (fruit) => fruit.idFruta === data.idFruta
+            ).nombreFruta;
+            const qualityName = quality.find(
+                (quality) => quality.idCalidad === data.idCalidad
+            ).calidad;
 
             dataSet[index] = [
                 index + 1,
-                data.idSolicitud,
-                typeRequest,
-                statusRequest,
-                data.fechaPublicacion,
-                [data.idSolicitud],
+                data.idDetalleSolicitud,
+                fruitName,
+                qualityName,
+                data.kilos,
             ];
         });
         // =============================================
@@ -77,23 +83,10 @@ function HistorialSolicitudes(props) {
                     order: [[0, 'desc']],
                     columns: [
                         { title: '#' },
-                        { title: 'ID Solicitud' },
-                        { title: 'Tipo Solicitud' },
-                        { title: 'Estado Solicitud' },
-                        { title: 'Fecha Publicacion' },
-                        {
-                            title: 'Acciones',
-                            render: function (data, arr) {
-                                return `
-                           
-                              <a href="/cliente/historial/solicitudes/${data}" data="${data}">
-    
-                              <svg aria-hidden="true"  style="color:black; background:none; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:3px" focusable="false" data-prefix="fas" data-icon="info-circle" class="svg-inline--fa fa-info-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
-                    
-                              </a>
-                             `;
-                            },
-                        },
+                        { title: 'ID Detalle Solicitud' },
+                        { title: 'Fruta' },
+                        { title: 'Calidad' },
+                        { title: 'Kilos' },
                     ],
                 });
 
@@ -123,7 +116,7 @@ function HistorialSolicitudes(props) {
                         <div className='row mb-2'>
                             <div className='col-md-12'>
                                 <h1 className='m-0 text-dark'>
-                                    Historial de Solicitudes
+                                    Detalles de Solicitud ID: {idSolicitud}
                                 </h1>
                             </div>
                         </div>
@@ -154,4 +147,4 @@ function HistorialSolicitudes(props) {
     );
 }
 
-export default HistorialSolicitudes;
+export default DetalleSolicitudes;
