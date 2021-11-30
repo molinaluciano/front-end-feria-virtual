@@ -10,6 +10,7 @@ import {
     getPayTypes,
     getStatusSales,
 } from '../../service/status_and_types/status_and_types';
+import BackToComponent from '../backToComponent';
 
 function HistorialVentas(props) {
     const [sales, setSales] = useState([]);
@@ -33,8 +34,9 @@ function HistorialVentas(props) {
         setPayType(allPayType);
         setStatusSale(allStatusSale);
         setSales(allSales);
-
-        await loadData();
+        if (allSales) {
+            //await loadData();
+        }
     };
 
     useEffect(() => {
@@ -44,31 +46,46 @@ function HistorialVentas(props) {
     const loadData = async () => {
         // CARGAR DATA SET
         const dataSet = [];
+
         sales.forEach((data, index) => {
-            const detailSale = data.detalleVenta;
-            const typePay = payType.find(
-                (type) => type.idTipoPago === data.idTipoPago
-            ).tipoPago;
+            if (data != null) {
+                // const { detalleVenta } = data;
 
-            const saleStatus = statusSale.find(
-                (status) => status.idEstadoVenta === data.idEstadoVenta
-            ).estado;
+                let detailSale = data.detalleVenta;
+                if (detailSale === undefined) {
+                    detailSale = {
+                        idDetalleVenta: '',
+                        idVenta: '',
+                        precioBruto: '',
+                        precioNeto: '',
+                        fechaFin: '',
+                        fechaInicio: '',
+                    };
+                }
+                const typePay = payType.find(
+                    (type) => type.idTipoPago === data.idTipoPago
+                ).tipoPago;
 
-            dataSet[index] = [
-                index + 1,
-                data.idVenta,
-                data.idSolicitud,
-                typePay,
-                saleStatus,
-                [
-                    detailSale.idDetalleVenta + '!!!!',
-                    detailSale.idVenta + '!!!!',
-                    detailSale.precioBruto + '!!!!',
-                    detailSale.precioNeto + '!!!!',
-                    detailSale.fechaFin + '!!!!',
-                    detailSale.fechaInicio,
-                ],
-            ];
+                const saleStatus = statusSale.find(
+                    (status) => status.idEstadoVenta === data.idEstadoVenta
+                ).estado;
+
+                dataSet[index] = [
+                    index + 1,
+                    data.idVenta,
+                    data.idSolicitud,
+                    typePay,
+                    saleStatus,
+                    [
+                        detailSale.idDetalleVenta + '!!!!',
+                        detailSale.idVenta + '!!!!',
+                        detailSale.precioBruto + '!!!!',
+                        detailSale.precioNeto + '!!!!',
+                        detailSale.fechaFin + '!!!!',
+                        detailSale.fechaInicio,
+                    ],
+                ];
+            }
         });
         // =============================================
         // =            EJECUTAMOS DATATABLE          =
@@ -131,8 +148,19 @@ function HistorialVentas(props) {
                 <div className='content-header'>
                     <div className='container-fluid'>
                         <div className='row mb-2'>
-                            <div className='col-md-12'>
-                                <h1 className='m-0 text-dark'>
+                            <div
+                                className=' jumbotron mt-5'
+                                style={{
+                                    backgroundColor: '#324c3f',
+                                    height: '200px',
+                                    paddingTop: '80px',
+                                }}
+                            >
+                                <h1
+                                    style={{
+                                        color: 'white',
+                                    }}
+                                >
                                     Historial de Ventas
                                 </h1>
                             </div>
@@ -156,7 +184,7 @@ function HistorialVentas(props) {
                         </div>
                     </div>
                 </div>
-                <Button onClick={goToPreviousPath}>Volver atras</Button>
+                <BackToComponent />
                 <hr />
                 <SignOutComponent />
             </div>

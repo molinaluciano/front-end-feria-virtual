@@ -72,9 +72,22 @@ function MisCompras() {
 
     return (
         <div className='container'>
-            <header className='App-header'>
-                <h1>Mis Compras</h1>
-            </header>
+            <div
+                className=' jumbotron mt-5'
+                style={{
+                    backgroundColor: '#324c3f',
+                    height: '200px',
+                    paddingTop: '80px',
+                }}
+            >
+                <h1
+                    style={{
+                        color: 'white',
+                    }}
+                >
+                    Mis Compras
+                </h1>
+            </div>
             <ul className='list-group mb-5'>
                 <li className='list-group-item'>
                     <Link

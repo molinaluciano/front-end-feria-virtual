@@ -13,6 +13,7 @@ import {
     getFruits,
     getQualityTypes,
 } from '../../../service/Cliente-Externo/request-service';
+import BackToComponent from '../../../component/backToComponent';
 
 function ListSaldosComprados() {
     const [fruit, setFruit] = useState([]);
@@ -127,10 +128,21 @@ function ListSaldosComprados() {
     return (
         <div className='content-wrapper mt-5' style={{ minHeight: '494px' }}>
             <div className='content-header'>
-                <div className='container-fluid'>
+                <div className='container'>
                     <div className='row mb-2'>
-                        <div className='col-md-12'>
-                            <h1 className='m-0 text-dark'>
+                        <div
+                            className=' jumbotron mt-5'
+                            style={{
+                                backgroundColor: '#324c3f',
+                                height: '200px',
+                                paddingTop: '80px',
+                            }}
+                        >
+                            <h1
+                                style={{
+                                    color: 'white',
+                                }}
+                            >
                                 Historial de Compras
                             </h1>
                         </div>
@@ -139,7 +151,7 @@ function ListSaldosComprados() {
             </div>
 
             <div className='content'>
-                <div className='container-fluid'>
+                <div className='container'>
                     <div className='row'>
                         <div className='col-lg-12'>
                             <div className='card card-primary card-outline'>
@@ -152,9 +164,7 @@ function ListSaldosComprados() {
 
                                 <ul className='list-group mb-5'>
                                     <li className='list-group-item'>
-                                        <Button onClick={goToPreviousPath}>
-                                            Volver atras
-                                        </Button>
+                                        <BackToComponent />
 
                                         <hr />
                                         <SignOutComponent />

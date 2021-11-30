@@ -5,16 +5,29 @@ import { Link } from 'react-router-dom';
 function MenuClienteLocal() {
     return (
         <div className='container'>
-            <header className='App-header'>
-                <h1>Panel de Cliente Local</h1>
-            </header>
+            <div
+                className=' jumbotron mt-5'
+                style={{
+                    backgroundColor: '#324c3f',
+                    height: '200px',
+                    paddingTop: '80px',
+                }}
+            >
+                <h1
+                    style={{
+                        color: 'white',
+                    }}
+                >
+                    Mis Compras
+                </h1>
+            </div>
             <ul className='list-group mb-5'>
                 <li className='list-group-item'>
                     <Link
                         to='/cliente_local/comprar-saldos'
                         className='list-group-item list-group-item-action'
                     >
-                        Ver productor disponibles
+                        Ver saldos disponibles
                     </Link>
                     <Link
                         to='/cliente_local/historial'

@@ -9,6 +9,7 @@ import {
     getQualityTypes,
     getRequestByClientId,
 } from '../../service/Cliente-Externo/request-service';
+import BackToComponent from '../backToComponent';
 
 function DetalleSolicitudes(props) {
     const { idSolicitud } = useParams();
@@ -113,16 +114,24 @@ function DetalleSolicitudes(props) {
             >
                 <div className='content-header'>
                     <div className='container-fluid'>
-                        <div className='row mb-2'>
-                            <div className='col-md-12'>
-                                <h1 className='m-0 text-dark'>
-                                    Detalles de Solicitud ID: {idSolicitud}
-                                </h1>
-                            </div>
+                        <div
+                            className=' jumbotron mt-5'
+                            style={{
+                                backgroundColor: '#324c3f',
+                                height: '200px',
+                                paddingTop: '80px',
+                            }}
+                        >
+                            <h1
+                                style={{
+                                    color: 'white',
+                                }}
+                            >
+                                Detalles de Solicitud ID: {idSolicitud}
+                            </h1>
                         </div>
                     </div>
                 </div>
-
                 <div className='content'>
                     <div className='container-fluid'>
                         <div className='row'>
@@ -139,7 +148,7 @@ function DetalleSolicitudes(props) {
                         </div>
                     </div>
                 </div>
-                <Button onClick={goToPreviousPath}>Volver atras</Button>
+                <BackToComponent />
                 <hr />
                 <SignOutComponent />
             </div>

@@ -9,6 +9,7 @@ import {
     getStatusRequest,
     getTypeRequest,
 } from '../../service/status_and_types/status_and_types';
+import BackToComponent from '../backToComponent';
 
 function HistorialSolicitudes(props) {
     const [request, setRequest] = useState([]);
@@ -121,8 +122,19 @@ function HistorialSolicitudes(props) {
                 <div className='content-header'>
                     <div className='container-fluid'>
                         <div className='row mb-2'>
-                            <div className='col-md-12'>
-                                <h1 className='m-0 text-dark'>
+                            <div
+                                className=' jumbotron mt-5'
+                                style={{
+                                    backgroundColor: '#324c3f',
+                                    height: '200px',
+                                    paddingTop: '80px',
+                                }}
+                            >
+                                <h1
+                                    style={{
+                                        color: 'white',
+                                    }}
+                                >
                                     Historial de Solicitudes
                                 </h1>
                             </div>
@@ -146,7 +158,7 @@ function HistorialSolicitudes(props) {
                         </div>
                     </div>
                 </div>
-                <Button onClick={goToPreviousPath}>Volver atras</Button>
+                <BackToComponent />
                 <hr />
                 <SignOutComponent />
             </div>
