@@ -11,7 +11,13 @@ function MenuClienteLocal() {
             <ul className='list-group mb-5'>
                 <li className='list-group-item'>
                     <Link
-                        to='/cliente/historial'
+                        to='/cliente_local/comprar-saldos'
+                        className='list-group-item list-group-item-action'
+                    >
+                        Ver productor disponibles
+                    </Link>
+                    <Link
+                        to='/cliente_local/historial'
                         className='list-group-item list-group-item-action'
                     >
                         Historial

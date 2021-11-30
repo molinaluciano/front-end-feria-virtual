@@ -8,22 +8,35 @@ import { Link } from 'react-router-dom';
 
 import { getAllBalance } from '../../../service/Administrador/balance-services';
 import SignOutComponent from '../../../component/SignOutComponent';
+import {
+    getFruits,
+    getQualityTypes,
+} from '../../../service/Cliente-Externo/request-service';
 
 function ListSaldos() {
     const [form, setForm] = useState([]);
+    const [fruit, setFruit] = useState([]);
+    const [quality, setQuality] = useState([]);
+
     // const [dataSet, setDataSet] = useState([])
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const loadData = async () => {
         // CARGAR DATA SET
         const dataSet = [];
         form.forEach((data, index) => {
+            const fruitName = fruit.find(
+                (fruit) => fruit.idFruta === data.idFruta
+            ).nombreFruta;
+            const qualityName = quality.find(
+                (quality) => quality.idCalidad === data.idCalidad
+            ).calidad;
             dataSet[index] = [
                 index + 1,
                 data.idSaldo,
                 data.kilos,
-                data.idFruta,
-                data.idCalidad,
-                data.disponible,
+                fruitName,
+                qualityName,
+                data.disponible === 0 ? 'No Disponible' : 'Disponible',
                 data.idCliente,
                 data.precio,
                 [
@@ -86,6 +99,11 @@ function ListSaldos() {
             let response = [];
             try {
                 response = await getAllBalance();
+                const fruitType = await getFruits();
+                const qualityType = await getQualityTypes();
+
+                setFruit(fruitType);
+                setQuality(qualityType);
             } catch (error) {
                 throw new Error(error);
             }

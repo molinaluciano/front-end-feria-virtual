@@ -3,10 +3,6 @@ import $ from 'jquery';
 import swal from 'sweetalert';
 import React, { useState, useEffect } from 'react';
 import { updateBalance } from '../../../service/Administrador/balance-services';
-import {
-    getFruits,
-    getQualityTypes,
-} from '../../../service/Cliente-Externo/request-service';
 
 const initialValues = {
     idSaldo: 0,
@@ -17,10 +13,9 @@ const initialValues = {
     idCalidad: 0,
     precio: 0,
 };
-function EditarSaldo() {
+function ConfirmarCompra() {
+    let id = localStorage.getItem('IDUSER');
     const [formData, setFormData] = useState(initialValues);
-    const [fruit, setFruit] = useState([]);
-    const [quality, setQuality] = useState([]);
 
     const [error, setError] = useState(false);
 
@@ -28,30 +23,29 @@ function EditarSaldo() {
     const requiredFields = ['kilos', 'idCalidad', 'idFruta'];
 
     const handleSave = async () => {
-        if (requiredFields.some((field) => formData[field] === '')) {
-            swal({
-                title: 'Debe completar todos los campos',
-                icon: 'warning',
-            });
+        formData.disponible = 0;
+        formData.idCliente = id;
+        formData.kilos = null;
+        formData.idFruta = null;
+        formData.idCalidad = null;
+        formData.precio = null;
 
-            return setError(true);
-        } else {
-            const resultUpdated = await updateBalance(formData);
-            validateResult(resultUpdated);
-        }
+        const resultUpdated = await updateBalance(formData);
+
+        await validateResult(resultUpdated);
     };
 
-    const validateResult = (result) => {
+    const validateResult = async (result) => {
         if (result === true) {
             swal({
-                title: 'Saldo Actualizado',
+                title: 'Compra exitosa',
                 icon: 'success',
             }).then(() => {
                 window.location.reload();
             });
         } else {
             swal({
-                title: 'Error al Actualizar',
+                title: 'Error al Comprar Saldo',
                 text: result.message,
                 icon: 'error',
             });
@@ -59,7 +53,7 @@ function EditarSaldo() {
     };
 
     const loadData = () => {
-        $(document).on('click', '.editarInputs', function (e) {
+        $(document).on('click', '.comprarSaldo', function (e) {
             e.preventDefault();
             let data = $(this).attr('data').split('!!!!,');
 
@@ -74,16 +68,6 @@ function EditarSaldo() {
             });
         });
     };
-    const fetchData = async () => {
-        const fruitType = await getFruits();
-        const qualityType = await getQualityTypes();
-
-        setFruit(fruitType);
-        setQuality(qualityType);
-    };
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     useEffect(() => {
         loadData();
@@ -96,19 +80,12 @@ function EditarSaldo() {
         }
     }, [error, formData, requiredFields]);
 
-    const displayQuality = quality.map((qu) => {
-        return <option value={qu.idCalidad}>{qu.calidad}</option>;
-    });
-
-    const displayFruit = fruit.map((fr) => {
-        return <option value={fr.idFruta}>{fr.nombreFruta}</option>;
-    });
     return (
-        <div className='modal fade' id='editarSaldo'>
+        <div className='modal fade' id='comprarSaldo'>
             <div className='modal-dialog'>
                 <div className='modal-content'>
                     <div className='modal-header'>
-                        <h4 className='modal-title'>Editar Saldo</h4>
+                        <h4 className='modal-title'>Comprar Saldo</h4>
                     </div>
 
                     <form
@@ -127,65 +104,57 @@ function EditarSaldo() {
                                     </div>
 
                                     <input
+                                        disabled={true}
                                         id='kilos'
                                         type='text'
                                         className='form-control'
                                         name='kilos'
                                         placeholder='Kilos'
-                                        value={formData.kilos.toString()}
-                                        onChange={(e) => {
-                                            setFormData({
-                                                ...formData,
-                                                kilos: e.target.value,
-                                            });
-                                        }}
+                                        value={formData.kilos?.toString()}
                                     />
-
-                                    <div className='invalid-feedback invalid-kilos'></div>
                                 </div>
                             </div>
 
-                            <div class='row mb-2 mt-4'>
-                                {/* SELECT FRUTA*/}
-                                <div class='col-6'>
-                                    <select
-                                        onChange={(e) => {
-                                            setFormData({
-                                                ...formData,
-                                                idFruta: e.target.value,
-                                            });
-                                        }}
-                                        name='idFruta'
+                            {/* ENTRADA ID FRUTA*/}
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='idFruta'>Fruta:</label>
+                                    </div>
+
+                                    <input
+                                        disabled={true}
                                         id='idFruta'
-                                        class='form-control'
-                                    >
-                                        <option disabled selected>
-                                            Seleccione Fruta
-                                        </option>
-                                        {displayFruit}
-                                    </select>
-                                </div>
-                                {/* SELECT calidad*/}
-
-                                <div class='col-6'>
-                                    <select
-                                        onChange={(e) => {
-                                            setFormData({
-                                                ...formData,
-                                                idCalidad: e.target.value,
-                                            });
-                                        }}
-                                        name='idCalidad'
-                                        id='idCalidad'
-                                        class='form-control'
-                                    >
-                                        <option disabled selected>
-                                            Seleccione Calidad
-                                        </option>
-                                        {displayQuality}
-                                    </select>
+                                        type='text'
+                                        className='form-control'
+                                        name='idFruta'
+                                        placeholder='Fruta'
+                                        value={formData.idFruta?.toString()}
+                                    />
                                 </div>
                             </div>
+
+                            {/* ENTRADA ID CALIDAD*/}
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='idCalidad'>
+                                            Calidad:
+                                        </label>
+                                    </div>
+
+                                    <input
+                                        disabled={true}
+                                        id='idCalidad'
+                                        type='text'
+                                        className='form-control'
+                                        name='idCalidad'
+                                        placeholder='Calidad'
+                                        value={formData.idCalidad?.toString()}
+                                    />
+                                </div>
+                            </div>
+
                             {/* ENTRADA PRECIO*/}
                             <div className='form-group'>
                                 <div className='input-group mb-3 mt-3'>
@@ -194,21 +163,14 @@ function EditarSaldo() {
                                     </div>
 
                                     <input
+                                        disabled={true}
                                         id='precio'
                                         type='text'
                                         className='form-control'
                                         name='precio'
                                         placeholder='Precio'
-                                        value={formData.precio.toString()}
-                                        onChange={(e) => {
-                                            setFormData({
-                                                ...formData,
-                                                precio: e.target.value,
-                                            });
-                                        }}
+                                        value={formData.precio?.toString()}
                                     />
-
-                                    <div className='invalid-feedback invalid-idCalidad'></div>
                                 </div>
                             </div>
                         </div>
@@ -220,7 +182,7 @@ function EditarSaldo() {
                                     className='btn btn-danger'
                                     data-dismiss='modal'
                                 >
-                                    Cerrar
+                                    Cancelar Compra
                                 </button>
                             </div>
 
@@ -229,7 +191,7 @@ function EditarSaldo() {
                                     type='submit'
                                     className='btn btn-primary'
                                 >
-                                    Guardar
+                                    Comprar
                                 </button>
                             </div>
                         </div>
@@ -240,4 +202,4 @@ function EditarSaldo() {
     );
 }
 
-export default EditarSaldo;
+export default ConfirmarCompra;

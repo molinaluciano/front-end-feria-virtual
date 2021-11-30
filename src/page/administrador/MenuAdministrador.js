@@ -22,18 +22,7 @@ function MenuAdministrador() {
                     >
                         Gestionar Ventas
                     </Link>
-                    <Link
-                        to='#'
-                        className='list-group-item list-group-item-action'
-                    >
-                        Gestionar Informes
-                    </Link>
-                    <Link
-                        to='#'
-                        className='list-group-item list-group-item-action'
-                    >
-                        Gestionar Subastas
-                    </Link>
+
                     <Link
                         to='/administrador/gestionar-saldos'
                         className='list-group-item list-group-item-action'
