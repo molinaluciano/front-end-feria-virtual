@@ -136,9 +136,20 @@ function ListSaldosDisponibles() {
             <div className='content-header'>
                 <div className='container-fluid'>
                     <div className='row mb-2'>
-                        <div className='col-md-12'>
-                            <h1 className='m-0 text-dark'>
-                                Gestion de Saldos Disponibles
+                        <div
+                            className=' jumbotron mt-5'
+                            style={{
+                                backgroundColor: '#324c3f',
+                                height: '200px',
+                                paddingTop: '80px',
+                            }}
+                        >
+                            <h1
+                                style={{
+                                    color: 'white',
+                                }}
+                            >
+                                Gestión de Saldos Disponibles
                             </h1>
                         </div>
                     </div>

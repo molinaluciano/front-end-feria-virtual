@@ -1,104 +1,104 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import React, { useEffect, useState } from 'react'
-import $ from 'jquery'
-import 'datatables.net'
-import 'datatables.net-bs4'
-import 'datatables.net-responsive'
-import { Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useEffect, useState } from 'react';
+import $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs4';
+import 'datatables.net-responsive';
+import { Link } from 'react-router-dom';
 
-import EditarProductor from './EditarProductor'
-import { getAllProducer } from '../../../../service/Productor/productor-service'
+import EditarProductor from './EditarProductor';
+import { getAllProducer } from '../../../../service/Productor/productor-service';
 
 function ListProductores() {
-  const [listCarrier, setlistCarrier] = useState([])
-  // const [dataSet, setDataSet] = useState([])
+    const [listCarrier, setlistCarrier] = useState([]);
+    // const [dataSet, setDataSet] = useState([])
 
-  useEffect(() => {
-    const fetchData = async () => {
-      let response = []
-      try {
-        response = await getAllProducer()
-      } catch (error) {
-        console.log(
-          '🚀 ~ file: ListTransportistas.js ~ line 14 ~ fetchData ~ error',
-          error,
-        )
-      }
-      setlistCarrier(response)
+    useEffect(() => {
+        const fetchData = async () => {
+            let response = [];
+            try {
+                response = await getAllProducer();
+            } catch (error) {
+                console.log(
+                    '🚀 ~ file: ListTransportistas.js ~ line 14 ~ fetchData ~ error',
+                    error
+                );
+            }
+            setlistCarrier(response);
 
-      await loadData()
-    }
-    fetchData()
-  }, [])
+            await loadData();
+        };
+        fetchData();
+    }, []);
 
-  const loadData = async () => {
-    // CARGAR DATA SET
-    const dataSet = []
-    listCarrier.forEach((client, index) => {
-      console.log(
-        '🚀 ~ file: ListProductores.js ~ line 38 ~ listCarrier.forEach ~ client',
-        client,
-      )
+    const loadData = async () => {
+        // CARGAR DATA SET
+        const dataSet = [];
+        listCarrier.forEach((client, index) => {
+            console.log(
+                '🚀 ~ file: ListProductores.js ~ line 38 ~ listCarrier.forEach ~ client',
+                client
+            );
 
-      dataSet[index] = [
-        index + 1,
-        client.nombre,
-        client.apellidoPaterno,
-        client.apellidoMaterno,
-        client.rut,
-        client.direccion,
-        client.codigoPostal,
-        client.telefono,
-        client.correo,
-        client.idContrato,
-        [
-          client.idUsuario + '!!!!',
-          client.nombre + '!!!!',
-          client.apellidoPaterno + '!!!!',
-          client.apellidoMaterno + '!!!!',
-          client.contrasena + '!!!!',
-          client.rut + '!!!!',
-          client.direccion + '!!!!',
-          client.codigoPostal + '!!!!',
-          client.telefono + '!!!!',
-          client.correo + '!!!!',
-          client.numeroIdentificador + '!!!!',
-          client.idContrato,
-        ],
-      ]
-    })
-    // =============================================
-    // =            EJECUTAMOS DATATABLE          =
-    // =============================================
-    if (dataSet.length != 0) {
-      $(document).ready(function () {
-        let tablaPlanes = $('.table').DataTable({
-          retrieve: true,
-          data: dataSet,
-          columnDefs: [
-            {
-              searchable: true,
-              orderable: true,
-              targets: 0,
-            },
-          ],
+            dataSet[index] = [
+                index + 1,
+                client.nombre,
+                client.apellidoPaterno,
+                client.apellidoMaterno,
+                client.rut,
+                client.direccion,
+                client.codigoPostal,
+                client.telefono,
+                client.correo,
+                client.idContrato,
+                [
+                    client.idUsuario + '!!!!',
+                    client.nombre + '!!!!',
+                    client.apellidoPaterno + '!!!!',
+                    client.apellidoMaterno + '!!!!',
+                    client.contrasena + '!!!!',
+                    client.rut + '!!!!',
+                    client.direccion + '!!!!',
+                    client.codigoPostal + '!!!!',
+                    client.telefono + '!!!!',
+                    client.correo + '!!!!',
+                    client.numeroIdentificador + '!!!!',
+                    client.idContrato,
+                ],
+            ];
+        });
+        // =============================================
+        // =            EJECUTAMOS DATATABLE          =
+        // =============================================
+        if (dataSet.length != 0) {
+            $(document).ready(function () {
+                let tablaPlanes = $('.table').DataTable({
+                    retrieve: true,
+                    data: dataSet,
+                    columnDefs: [
+                        {
+                            searchable: true,
+                            orderable: true,
+                            targets: 0,
+                        },
+                    ],
 
-          order: [[0, 'desc']],
-          columns: [
-            { title: '#' },
-            { title: 'Nombre' },
-            { title: 'Apellido Paterno' },
-            { title: 'Apellido Materno' },
-            { title: 'Rut' },
-            { title: 'Direccion' },
-            { title: 'Codigo Postal' },
-            { title: 'Telefono' },
-            { title: 'Correo' },
-            { title: 'ID Contrato' },
-            {
-              title: 'Acciones',
-              render: function (data, arr) {
-                return `
+                    order: [[0, 'desc']],
+                    columns: [
+                        { title: '#' },
+                        { title: 'Nombre' },
+                        { title: 'Apellido Paterno' },
+                        { title: 'Apellido Materno' },
+                        { title: 'Rut' },
+                        { title: 'Direccion' },
+                        { title: 'Codigo Postal' },
+                        { title: 'Telefono' },
+                        { title: 'Correo' },
+                        { title: 'ID Contrato' },
+                        {
+                            title: 'Acciones',
+                            render: function (data, arr) {
+                                return `
 
               <a href="#" class="editarInputs" data-toggle="modal" data-target="#editarProductor" data="${data}">
 
@@ -113,70 +113,83 @@ function ListProductores() {
                 <svg style="color:white; background:#dc3545; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:12px"
 
                 aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trash-alt" class="svg-inline--fa fa-trash-alt fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M32 464a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V128H32zm272-256a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zm-96 0a16 16 0 0 1 32 0v224a16 16 0 0 1-32 0zM432 32H312l-9.4-18.7A24 24 0 0 0 281.1 0H166.8a23.72 23.72 0 0 0-21.4 13.3L136 32H16A16 16 0 0 0 0 48v32a16 16 0 0 0 16 16h416a16 16 0 0 0 16-16V48a16 16 0 0 0-16-16z"></path></svg>
-              </a>`
-              },
-            },
-          ],
-        })
+              </a>`;
+                            },
+                        },
+                    ],
+                });
 
-        tablaPlanes
-          .on('order.dt search.dt', function () {
-            tablaPlanes
-              .column(0, { search: 'applied', order: 'applied' })
-              .nodes()
-              .each(function (cell, i) {
-                cell.innerHTML = i + 1
-              })
-          })
-          .draw()
-      })
-    }
-  }
+                tablaPlanes
+                    .on('order.dt search.dt', function () {
+                        tablaPlanes
+                            .column(0, { search: 'applied', order: 'applied' })
+                            .nodes()
+                            .each(function (cell, i) {
+                                cell.innerHTML = i + 1;
+                            });
+                    })
+                    .draw();
+            });
+        }
+    };
 
-  loadData()
+    loadData();
 
-  return (
-    <div className="content-wrapper mt-5" style={{ minHeight: '494px' }}>
-      <div className="content-header">
-        <div className="container-fluid">
-          <div className="row mb-2">
-            <div className="col-md-12">
-              <h1 className="m-0 text-dark">Gestion de Productores</h1>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="content">
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-lg-12">
-              <div className="card card-primary card-outline">
-                <div className="card-header">
-                  <h5 className="m-0">
-                    <Link
-                      to="/administrador/gestionar-usuarios/gestionar-productores/nuevo-productor"
-                      className="list-group-item list-group-item-action"
-                    >
-                      + Nuevo Productor
-                    </Link>
-                  </h5>
+    return (
+        <div className='content-wrapper mt-5' style={{ minHeight: '494px' }}>
+            <div className='content-header'>
+                <div className='container-fluid'>
+                    <div className='row mb-2'>
+                        <div
+                            className=' jumbotron mt-5'
+                            style={{
+                                backgroundColor: '#324c3f',
+                                height: '200px',
+                                paddingTop: '80px',
+                            }}
+                        >
+                            <h1
+                                style={{
+                                    color: 'white',
+                                }}
+                            >
+                                Gestión de Productores
+                            </h1>
+                        </div>
+                    </div>
                 </div>
-
-                <div className="card-body">
-                  <table
-                    className="table table-striped dt-responsive"
-                    style={{ width: '100%' }}
-                  ></table>
-                </div>
-              </div>
             </div>
-          </div>
+
+            <div className='content'>
+                <div className='container-fluid'>
+                    <div className='row'>
+                        <div className='col-lg-12'>
+                            <div className='card card-primary card-outline'>
+                                <div className='card-header'>
+                                    <h5 className='m-0'>
+                                        <Link
+                                            to='/administrador/gestionar-usuarios/gestionar-productores/nuevo-productor'
+                                            className='list-group-item list-group-item-action'
+                                        >
+                                            + Nuevo Productor
+                                        </Link>
+                                    </h5>
+                                </div>
+
+                                <div className='card-body'>
+                                    <table
+                                        className='table table-striped dt-responsive'
+                                        style={{ width: '100%' }}
+                                    ></table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <EditarProductor />
         </div>
-      </div>
-      <EditarProductor />
-    </div>
-  )
+    );
 }
 
-export default ListProductores
+export default ListProductores;

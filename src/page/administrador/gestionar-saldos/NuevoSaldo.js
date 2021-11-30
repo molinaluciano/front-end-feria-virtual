@@ -8,6 +8,7 @@ import {
     getFruits,
     getQualityTypes,
 } from '../../../service/Cliente-Externo/request-service';
+import BackToComponent from '../../../component/backToComponent';
 
 function NuevoSaldo() {
     const [form, setHandleForm] = useState({
@@ -109,9 +110,22 @@ function NuevoSaldo() {
 
     return (
         <div className='container'>
-            <header className='App-header mb-3'>
-                <h1>Nuevo Saldo</h1>
-            </header>
+            <div
+                className=' jumbotron mt-5'
+                style={{
+                    backgroundColor: '#324c3f',
+                    height: '200px',
+                    paddingTop: '80px',
+                }}
+            >
+                <h1
+                    style={{
+                        color: 'white',
+                    }}
+                >
+                    Nuevo Saldo
+                </h1>
+            </div>
             <ul className='list-group mb-5'>
                 <li className='list-group-item'>
                     <form onSubmit={sendForm}>
@@ -170,16 +184,9 @@ function NuevoSaldo() {
                         </div>
 
                         <div className='row mt-3'>
-                            <div className='col-6'>
-                                <Link
-                                    to='/administrador/gestionar-saldos'
-                                    className='btn btn-primary w-75'
-                                >
-                                    Ir hacia atrás
-                                </Link>
-                            </div>
-                            <div className='col-6'>
+                            <div className='col-12'>
                                 <button
+                                    style={{ backgroundColor: '#33334b' }}
                                     type='submit'
                                     className='btn btn-primary w-75'
                                 >
@@ -188,6 +195,7 @@ function NuevoSaldo() {
                             </div>
                         </div>
                     </form>
+                    <BackToComponent />
                     <hr />
                     <SignOutComponent />
                 </li>

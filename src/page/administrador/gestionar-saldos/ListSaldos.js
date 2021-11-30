@@ -12,6 +12,7 @@ import {
     getFruits,
     getQualityTypes,
 } from '../../../service/Cliente-Externo/request-service';
+import BackToComponent from '../../../component/backToComponent';
 
 function ListSaldos() {
     const [form, setForm] = useState([]);
@@ -120,8 +121,19 @@ function ListSaldos() {
             <div className='content-header'>
                 <div className='container-fluid'>
                     <div className='row mb-2'>
-                        <div className='col-md-12'>
-                            <h1 className='m-0 text-dark'>
+                        <div
+                            className=' jumbotron mt-5'
+                            style={{
+                                backgroundColor: '#324c3f',
+                                height: '200px',
+                                paddingTop: '80px',
+                            }}
+                        >
+                            <h1
+                                style={{
+                                    color: 'white',
+                                }}
+                            >
                                 Historial de Saldos
                             </h1>
                         </div>
@@ -130,7 +142,7 @@ function ListSaldos() {
             </div>
 
             <div className='content'>
-                <div className='container-fluid'>
+                <div className='container'>
                     <div className='row'>
                         <div className='col-lg-12'>
                             <div className='card card-primary card-outline'>
@@ -143,12 +155,7 @@ function ListSaldos() {
 
                                 <ul className='list-group mb-5'>
                                     <li className='list-group-item'>
-                                        <Link
-                                            to='/administrador/gestionar-saldos'
-                                            className='list-group-item list-group-item-action'
-                                        >
-                                            Ir hacia atrás
-                                        </Link>
+                                        <BackToComponent />
                                         <hr />
                                         <SignOutComponent />
                                     </li>

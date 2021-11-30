@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../../../component/SignOutComponent';
 import { Link } from 'react-router-dom';
 import ListSaldosDisponible from './ListSaldosDisponible';
+import BackToComponent from '../../../component/backToComponent';
 
 function GestionarSaldos() {
     return (
@@ -17,12 +18,7 @@ function GestionarSaldos() {
                     >
                         Historial de Saldos
                     </Link>
-                    <Link
-                        to='/administrador'
-                        className='list-group-item list-group-item-action'
-                    >
-                        Ir hacia atrás
-                    </Link>
+                    <BackToComponent />
                     <hr />
                     <SignOutComponent />
                 </li>
