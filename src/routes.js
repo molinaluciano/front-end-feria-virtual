@@ -51,8 +51,8 @@ import MenuHistorial from './component/historialClientes/MenuHistorial';
 import HistorialSolicitudes from './component/historialClientes/HistorialSolicitudes';
 import HistorialVentas from './component/historialClientes/HistorialVentas';
 import DetalleSolicitudes from './component/historialClientes/DetalleSolicitudes';
-import ComprarSaldosDisponibles from './page/clientes/cliente_local/ComprarSaldosDisponibles';
-import ListSaldosComprados from './page/clientes/cliente_local/ListSaldosComprados';
+import ComprarSaldosDisponibles from './page/clientes/cliente_interno/ComprarSaldosDisponibles';
+import ListSaldosComprados from './page/clientes/cliente_interno/ListSaldosComprados';
 // import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
 
 function Routes() {
@@ -202,22 +202,21 @@ function Routes() {
                     path='/cliente_interno'
                     component={MenuClienteInterno}
                 />
-
+                <Route
+                    exact
+                    path='/cliente_interno/comprar-saldos'
+                    component={ComprarSaldosDisponibles}
+                />
+                <Route
+                    exact
+                    path='/cliente_interno/historial'
+                    component={ListSaldosComprados}
+                />
                 {/* ==== CLIENTE LOCAL ===== */}
                 <Route
                     exact
                     path='/cliente_local'
                     component={MenuClienteLocal}
-                />
-                <Route
-                    exact
-                    path='/cliente_local/comprar-saldos'
-                    component={ComprarSaldosDisponibles}
-                />
-                <Route
-                    exact
-                    path='/cliente_local/historial'
-                    component={ListSaldosComprados}
                 />
 
                 {/* ==== CONSULTOR ===== */}
