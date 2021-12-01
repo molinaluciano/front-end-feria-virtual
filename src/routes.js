@@ -239,6 +239,11 @@ function Routes() {
                     path='/productor/participar-solicitudes/detalle-solicitud/:id'
                     component={DetalleSolicitudDisponible}
                 />
+                <Route
+                    exact
+                    path='/productor/gestionar-solicitudes/:idSolicitud'
+                    component={DetalleSolicitudes}
+                />
 
                 <Route exact path='/' component={Login} />
             </Switch>

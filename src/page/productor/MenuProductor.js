@@ -27,13 +27,13 @@ function MenuProductor() {
                         to='/productor/gestionar-solicitudes/mis-solicitudes'
                         className='list-group-item list-group-item-action'
                     >
-                        Gestionar solicitudes de venta
+                        Historial de Solicitudes
                     </Link>
                     <Link
                         to='/productor/participar-solicitudes/solicitudes-disponibles'
                         className='list-group-item list-group-item-action'
                     >
-                        Participar solicitudes de venta
+                        Participar en Solicitudes de Venta
                     </Link>
                     <hr />
                     <SignOutComponent />
