@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../../config/endPoints";
+import { getAuctionsById } from "../../service/Transportista/auctions-service"
 require("dotenv").config();
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -81,6 +82,12 @@ export const getFruitById = (id) => {
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
   });
+};
+
+export const getRoutesDetail = async (auctionId) => {
+  const auctionDetailResponse = await getAuctionsById(auctionId);
+  const routesDetail = auctionDetailResponse[0].rutas[0].detallesRuta;
+  return routesDetail;
 };
 
 
