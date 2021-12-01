@@ -23,22 +23,22 @@ function MenuGestionarVentas() {
                         Aceptar Solicitudes de Compra
                     </Link>
                     <Link
-                        to='#'
+                        to='/administrador/gestionar-ventas/controlar_solicitudes'
                         className='list-group-item list-group-item-action'
                     >
-                        Controlar Estados
+                        Controlar Solicitudes
+                    </Link>
+                    <Link
+                        to='/administrador/gestionar-ventas/controlar_ventas'
+                        className='list-group-item list-group-item-action'
+                    >
+                        Controlar Ventas
                     </Link>
                     <Link
                         to='#'
                         className='list-group-item list-group-item-action'
                     >
                         Gestionar Pagos
-                    </Link>
-                    <Link
-                        to='#'
-                        className='list-group-item list-group-item-action'
-                    >
-                        Ingresar Saldos
                     </Link>
                     <Button onClick={goToPreviousPath}>Volver atras</Button>
 

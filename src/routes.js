@@ -53,6 +53,8 @@ import HistorialVentas from './component/historialClientes/HistorialVentas';
 import DetalleSolicitudes from './component/historialClientes/DetalleSolicitudes';
 import ComprarSaldosDisponibles from './page/clientes/cliente_interno/ComprarSaldosDisponibles';
 import ListSaldosComprados from './page/clientes/cliente_interno/ListSaldosComprados';
+import ControlarSolicitudes from './page/administrador/gestionar-ventas/controlar-solicitudes/ControlarSolicitudes';
+import ControlarVentas from './page/administrador/gestionar-ventas/controlar-ventas/ControlarVentas';
 // import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
 
 function Routes() {
@@ -129,6 +131,22 @@ function Routes() {
                     exact
                     path='/administrador/gestionar-saldos/historial'
                     component={ListSaldos}
+                />
+                <Route
+                    exact
+                    path='/administrador/gestionar-ventas/controlar_solicitudes'
+                    component={ControlarSolicitudes}
+                />
+
+                <Route
+                    exact
+                    path='/administrador/gestionar-ventas/controlar_solicitudes/:idSolicitud'
+                    component={DetalleSolicitudes}
+                />
+                <Route
+                    exact
+                    path='/administrador/gestionar-ventas/controlar_ventas'
+                    component={ControlarVentas}
                 />
 
                 {/* ==== TRANSPORTISTA ===== */}
