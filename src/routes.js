@@ -218,6 +218,11 @@ function Routes() {
                     path='/cliente_local'
                     component={MenuClienteLocal}
                 />
+                <Route
+                    exact
+                    path='/cliente_local/crear-solicitud'
+                    component={CrearSolicitud}
+                />
 
                 {/* ==== CONSULTOR ===== */}
                 <Route exact path='/consultor' component={MenuConsultor} />

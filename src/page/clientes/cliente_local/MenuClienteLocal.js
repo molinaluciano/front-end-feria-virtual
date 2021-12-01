@@ -24,6 +24,12 @@ function MenuClienteLocal() {
             <ul className='list-group mb-5'>
                 <li className='list-group-item'>
                     <Link
+                        to='/cliente_local/crear-solicitud'
+                        className='list-group-item list-group-item-action'
+                    >
+                        Crear Solicitud
+                    </Link>
+                    <Link
                         to='/cliente/historial'
                         className='list-group-item list-group-item-action'
                     >
