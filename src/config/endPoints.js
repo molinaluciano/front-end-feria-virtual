@@ -53,6 +53,7 @@ module.exports = {
         deleteBalance: '/delete-balance/',
         getPayType: '/select-pay-type',
         getStatusSale: '/select-status-sale',
+        getAllRequest: '/requests',
     },
 };
 

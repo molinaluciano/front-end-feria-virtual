@@ -72,7 +72,7 @@ function DetalleSolicitudDisponible() {
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Ok",
       }).then(() => {
-        window.location.href = "/";
+        window.location.href = "/productor/participar-solicitudes/solicitudes-disponibles";
       });
     }
   };
