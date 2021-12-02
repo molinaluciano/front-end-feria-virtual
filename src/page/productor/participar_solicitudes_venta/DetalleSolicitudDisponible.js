@@ -82,22 +82,122 @@ function DetalleSolicitudDisponible() {
   }, []);
 
   return (
-    <div className="container">
-      <header className="App-header">
-        <h1>Detalle Solicitud N*{id}</h1>
-          <ul class="list-group list-group-flush">
-            <li class="list-group-item">Nombre Cliente: {requestDetail.customerName}</li>
-            <li class="list-group-item">Mail Cliente: {requestDetail.customerMail}</li>
-            <li class="list-group-item">Teléfono Cliente: {requestDetail.customerPhone}</li>
-            <li class="list-group-item">Fruta Solicitada: {requestDetail.fruta}</li>
-            <li class="list-group-item">Calidad de la Fruta: {requestDetail.quality}</li>
-            <li class="list-group-item">Kilos de Fruta: {requestDetail.kilos}</li>
-          </ul>
+    <div className="container" >
+      <header className="App-header" style={{
+                    backgroundColor: '#324c3f',
+                    height: '200px',
+                    paddingTop: '80px',
+                }}>
+        <h1>Detalle Solicitud N°{id}</h1>
+        <form encType='multipart/form-data'>
+            <div className='form-group'>
+              <div className='input-group mb-3 mt-3'>
+                <div className='input-group-append input-group-text'>
+                    <label htmlFor='customerName'>
+                        Nombre cliente:
+                    </label>
+                </div>
+                <input
+                  disabled={true}
+                  defaultValue={requestDetail.customerName.toString()}
+                  id='customerName'
+                  type='text'
+                  className='form-control'
+                  name='customerName'
+                  />
+              </div>  
+            </div>
+            <div className='form-group'>
+              <div className='input-group mb-3 mt-3'>
+                <div className='input-group-append input-group-text'>
+                    <label htmlFor='customerMail'>
+                        Mail Cliente:
+                    </label>
+                </div>
+                <input
+                  disabled={true}
+                  defaultValue={requestDetail.customerMail.toString()}
+                  id='customerMail'
+                  type='text'
+                  className='form-control'
+                  name='customerMail'
+                  />
+              </div>  
+             </div> 
+             <div className='form-group'>
+              <div className='input-group mb-3 mt-3'>
+                <div className='input-group-append input-group-text'>
+                  <label htmlFor='customerPhone'>
+                      Teléfono Cliente:
+                  </label>
+                </div>
+                <input
+                  disabled={true}
+                  defaultValue={requestDetail.customerPhone.toString()}
+                  id='customerPhone'
+                  type='text'
+                  className='form-control'
+                  name='customerPhone'
+                  />
+              </div>
+            </div>
+            <div className='form-group'>
+              <div className='input-group mb-3 mt-3'>
+                <div className='input-group-append input-group-text'>
+                    <label htmlFor='fruta'>
+                        Fruta:
+                    </label>
+                </div>
+                <input
+                  disabled={true}
+                  defaultValue={requestDetail.fruta.toString()}
+                  id='fruta'
+                  type='text'
+                  className='form-control'
+                  name='fruta'
+                  />
+              </div>
+            </div>  
+            <div className='form-group'>
+              <div className='input-group mb-3 mt-3'>
+                        <div className='input-group-append input-group-text'>
+                  <label htmlFor='quality'>
+                      Calidad:
+                  </label>
+              </div>
+              <input
+                disabled={true}
+                defaultValue={requestDetail.quality.toString()}
+                id='quality'
+                type='text'
+                className='form-control'
+                name='quality'
+                />
+              </div>
+            </div>
+            <div className='form-group'>
+              <div className='input-group mb-3 mt-3'>
+                <div className='input-group-append input-group-text'>
+                    <label htmlFor='kilos'>
+                        Kilos:
+                    </label>
+                </div>
+                <input
+                  disabled={true}
+                  defaultValue={requestDetail.kilos.toString()}
+                  id='kilos'
+                  type='text'
+                  className='form-control'
+                  name='kilos'
+                  />
+              </div>
+            </div>
+          </form>
       </header>
       <ul className="list-group mb-5">
         <form onSubmit={sendForm}>
           <li className="list-group-item">
-            <label for="inputPrecio">Precio</label>
+            <label for="inputPrecio">Precio Oferta:</label>
             <input onChange={handleInputChange} type="text" class="form-control mb-2" id="inputPrecio" name="precio" placeholder=""/>
             <button className="btn-primary mb-2">
               Participar
