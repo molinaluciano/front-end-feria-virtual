@@ -14,6 +14,7 @@ import EditarCliente from './page/administrador/gestionar-usuarios/gestionar-cli
 import NuevoProductor from './page/administrador/gestionar-usuarios/gestionar-productores/NuevoProductor';
 import NuevoTransportista from './page/administrador/gestionar-usuarios/gestionar-transportistas/NuevoTransportista';
 import AceptarSolicitudes from './page/administrador/gestionar-ventas/aceptar-solicitudes-de-compra/AceptarSolicitudesDeCompra';
+import DetalleSolicitudCompra from './page/administrador/gestionar-ventas/aceptar-solicitudes-de-compra/DetalleSolicitudDeCompra';
 
 /* ==== TRANSPORTISTA ===== */
 import MenuTransportista from './page/transportista/MenuTransportista';
@@ -117,6 +118,11 @@ function Routes() {
                     exact
                     path='/administrador/gestionar-ventas/aceptar-solicitudes'
                     component={AceptarSolicitudes}
+                />
+                <Route
+                    exact
+                    path='/administrador/gestionar-ventas/aceptar-solicitudes/detalle-solicitud/:id'
+                    component={DetalleSolicitudCompra}
                 />
                 <Route
                     exact

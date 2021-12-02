@@ -9,7 +9,7 @@ import {
     getStatusSales,
 } from '../../../../service/status_and_types/status_and_types';
 import BackToComponent from '../../../../component/backToComponent';
-import { getRequestById } from '../../../../service/global-request';
+import { getRequestByStatusId } from '../../../../service/global-request';
 import {
     getAllAuctions,
     getDetailAuctions,
@@ -54,11 +54,8 @@ function GestionarPagos(props) {
         const allPayType = await getPayTypes();
         const allStatusSale = await getStatusSales();
         // dsp cambiar por el 5
-        const allRequest = await getRequestById(2);
-        console.log(
-            '🚀 ~ file: GestionarPagos.js ~ line 56 ~ fetchData ~ allRequest',
-            allRequest
-        );
+        const allRequest = await getRequestByStatusId(2);
+
         const allAuctions = await getAllAuctions();
 
         const allSales = allRequest?.map((request) => request.venta);
@@ -87,10 +84,9 @@ function GestionarPagos(props) {
         const dataSet = [];
 
         sales.forEach((data, index) => {
-            const { priceAuction, priceProducer, priceCompany, iva } =
-                findPrices(data.idSolicitud);
-
             if (data != null) {
+                const { priceAuction, priceProducer, priceCompany, iva } =
+                    findPrices(data.idSolicitud);
                 // const { detalleVenta } = data;
 
                 let detailSale = data.detalleVenta;

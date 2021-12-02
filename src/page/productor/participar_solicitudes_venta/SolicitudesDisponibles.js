@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../../../component/SignOutComponent';
 import { Link } from 'react-router-dom';
-import { getRequestById } from '../../../service/global-request';
+import { getRequestByStatusId } from '../../../service/Productor/request-service';
 import { useState, useEffect } from 'react';
 import Skeleton from '@mui/material/Skeleton';
 import {
@@ -15,7 +15,7 @@ function SolicitudesDisponibles() {
     const [requests, setRequests] = useState([]);
 
     const fetchData = async () => {
-        const response = await getRequestById(3);
+        const response = await getRequestByStatusId(3);
         console.log('response', response);
 
         const requestsInfo = response.map((x) => {

@@ -49,12 +49,13 @@ export const salesByRequest = (requestId) => {
 };
 
 export const finishSale = (form) => {
+  console.log(form,'llegue')
   const endPoint = config.endPoint.updateSaleState
   return new Promise((resolve, reject) => {
     instance
       .put(endPoint, {
-          idVenta: form.idVenta,
-          responseCode: form.responseCode
+          idVenta: parseInt(form.idVenta),
+          responseCode: parseInt(form.responseCode)
       })
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)))

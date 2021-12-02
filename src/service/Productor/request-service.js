@@ -1,5 +1,6 @@
 import axios from "axios";
 import config from "../../config/endPoints";
+import { getAuctionsById } from "../../service/Transportista/auctions-service"
 require("dotenv").config();
 
 const API_URL = process.env.REACT_APP_API_URL;
@@ -9,6 +10,7 @@ const instance = axios.create({
 });
 
 export const requestParticipation = (form) => {
+  console.log('form', form)
   const endPoint = config.endPoint.participateRequest;
   return new Promise((resolve, reject) => {
     instance
@@ -38,6 +40,16 @@ export const getRequestById = (requestId) => {
   return new Promise((resolve, reject) => {
     instance
       .get(`${endPoint}/${requestId}`)
+      .then((result) => resolve(result.data))
+      .catch((error) => reject(new Error(error)));
+  });
+};
+
+export const getRequestByStatusId = (statusId) => {
+  const endPoint = config.endPoint.getRequestBystatus;
+  return new Promise((resolve, reject) => {
+    instance
+      .get(`${endPoint}/${statusId}`)
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
   });
@@ -81,6 +93,12 @@ export const getFruitById = (id) => {
       .then((result) => resolve(result.data))
       .catch((error) => reject(new Error(error)));
   });
+};
+
+export const getRoutesDetail = async (auctionId) => {
+  const auctionDetailResponse = await getAuctionsById(auctionId);
+  const routesDetail = auctionDetailResponse[0].rutas[0].detallesRuta;
+  return routesDetail;
 };
 
 

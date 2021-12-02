@@ -12,19 +12,8 @@ import { Button } from 'reactstrap';
 function MisCompras() {
     let id = localStorage.getItem('IDUSER');
     const [requests, setRequests] = useState([]);
-
-    //
-    //
-    //    TERMINAR DE TRAER DATOS DE LAS VENTAS X CLIENTE, PRODUCTOR SELECCIONADO, PRECIO FINAL, ETC
-    //
-    //
     const fetchData = async () => {
         const userRequestResult = await getRequestByClientId(id);
-        console.log(
-            '🚀 ~ file: MisCompras.js ~ line 19 ~ fetchData ~ userRequestResult',
-            userRequestResult
-        );
-
         const userRequestsInfo = userRequestResult.map((x) => {
             return {
                 idCalidad: x.detallesSolicitud[0].idCalidad,
@@ -64,7 +53,6 @@ function MisCompras() {
         });
     };
 
-    console.log(requests);
 
     useEffect(() => {
         fetchData();

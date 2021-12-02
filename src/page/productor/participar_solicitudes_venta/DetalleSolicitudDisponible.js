@@ -10,7 +10,7 @@ getQualityTypeById,
 getUserById,
 getFruitById,
 } from "../../../service/Productor/request-service"
-import { requestDetailsById } from "../../../service/global-request" 
+import { requestDetailsById, getRequestDetailByIdResponse } from "../../../service/global-request" 
 function DetalleSolicitudDisponible() {
   let { id } = useParams();
 
@@ -31,28 +31,15 @@ function DetalleSolicitudDisponible() {
   const fetchData = async () => {
     const requestDetailResponse = await requestDetailsById(id);
     const requestId = requestDetailResponse[0].idSolicitud;
-    const getRequestByIdResponse = await getRequestById(requestId)
-    const qualityId = getRequestByIdResponse[0].detallesSolicitud[0].idCalidad
-    const userId = getRequestByIdResponse[0].idUsuario;
-    const fruitId = getRequestByIdResponse[0].detallesSolicitud[0].idFruta;
-    const qualityResponse = await getQualityTypeById(qualityId);
-    const userInformation = await getUserById(userId);
-    const fruitResponse = await getFruitById(fruitId);
-
-    const kilos = getRequestByIdResponse[0].detallesSolicitud[0].kilos
-    const quality = qualityResponse.calidad;
-    const customerName = `${userInformation.nombre} ${userInformation.apellidoPaterno} ${userInformation.apellidoMaterno}`
-    const customerPhone = userInformation.telefono;
-    const customerMail = userInformation.correo;
-    const fruta = fruitResponse.nombreFruta;
+    const requestDetail = await getRequestDetailByIdResponse(requestId)
 
     setRequest({
-      fruta: fruta,
-      kilos: kilos,
-      quality: quality,
-      customerName: customerName,
-      customerPhone: customerPhone,
-      customerMail: customerMail
+      fruta: requestDetail.fruta,
+      kilos: requestDetail.kilos,
+      quality: requestDetail.quality,
+      customerName: requestDetail.customerName,
+      customerPhone: requestDetail.customerPhone,
+      customerMail: requestDetail.customerMail
     })
 
   } 
@@ -85,7 +72,7 @@ function DetalleSolicitudDisponible() {
         confirmButtonColor: "#3085d6",
         confirmButtonText: "Ok",
       }).then(() => {
-        window.location.href = "/";
+        window.location.href = "/productor/participar-solicitudes/solicitudes-disponibles";
       });
     }
   };
