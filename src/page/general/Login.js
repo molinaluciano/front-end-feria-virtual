@@ -70,13 +70,26 @@ function Login() {
     });
 
     return (
-        <div className='container'>
+        <div
+            className='container-fluid'
+            style={{
+                backgroundColor: '#324c3f',
+            }}
+        >
             <header
                 className='App-header'
                 style={{
                     backgroundColor: '#324c3f',
                 }}
             >
+                <h1
+                    className='mb-5'
+                    style={{
+                        color: 'white',
+                    }}
+                >
+                    Login Feria Virtual Web App
+                </h1>
                 <form onSubmit={sendForm}>
                     <div className='mb-3'>
                         <label for='InputEmail' className='form-label'>
@@ -104,8 +117,12 @@ function Login() {
                         />
                     </div>
 
-                    <button type='submit' className='btn btn-primary'>
-                        Iniciar Sesion
+                    <button
+                        style={{ backgroundColor: '#33334b', color: 'white' }}
+                        type='submit'
+                        className='btn '
+                    >
+                        Iniciar Sesión
                     </button>
                 </form>
             </header>

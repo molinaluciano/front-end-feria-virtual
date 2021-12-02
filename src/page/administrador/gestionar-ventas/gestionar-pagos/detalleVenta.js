@@ -5,28 +5,28 @@ import swal from 'sweetalert';
 import React, { useState, useEffect } from 'react';
 
 const initialValues = {
-    direccionDestino1: '',
-    direccionPartida1: '',
-    fechaRetiro1: '',
-    direccionDestino2: '',
-    direccionPartida2: '',
-    fechaRetiro2: '',
+    idDetalleVenta: '',
+    idVenta: '',
+    precioBruto: '',
+    precioNeto: '',
+    fechaInicio: '',
+    fechaFin: '',
 };
 function DetalleVenta() {
     const [formData, setFormData] = useState(initialValues);
 
     const loadData = () => {
-        $(document).on('click', '.detalleSubasta', function (e) {
+        $(document).on('click', '.detallesVenta', function (e) {
             e.preventDefault();
             let data = $(this).attr('data').split('!!!!,');
 
             setFormData({
-                direccionPartida1: data[0],
-                direccionDestino1: data[1],
-                fechaRetiro1: data[2],
-                direccionPartida2: data[3],
-                direccionDestino2: data[4],
-                fechaRetiro2: data[5],
+                idDetalleVenta: data[0],
+                idVenta: data[1],
+                precioBruto: data[2],
+                precioNeto: data[3],
+                fechaFin: data[4],
+                fechaInicio: data[5],
             });
         });
     };
@@ -36,125 +36,120 @@ function DetalleVenta() {
     });
 
     return (
-        <div className='modal fade' id='detalleSubasta'>
+        <div className='modal fade' id='detallesVenta'>
             <div className='modal-dialog'>
                 <div className='modal-content'>
                     <div className='modal-header'>
-                        <h4 className='modal-title'>Detalle de Rutas</h4>
+                        <h4 className='modal-title'>Detalle de Venta</h4>
                     </div>
 
                     <form encType='multipart/form-data'>
                         <div className='modal-body'>
-                            {/* RUTA UNO*/}
-                            <h3>Primera Ruta</h3>
+                            {/* ENTRADA ID VENTA*/}
                             <div className='form-group'>
                                 <div className='input-group mb-3 mt-3'>
                                     <div className='input-group-append input-group-text'>
-                                        <label htmlFor='direccionDestino1'>
-                                            Dirección de Partida:
+                                        <label htmlFor='idVenta'>
+                                            ID Venta:
                                         </label>
                                     </div>
                                     <input
                                         disabled={true}
-                                        defaultValue={formData.direccionPartida1.toString()}
-                                        id='direccionDestino1'
+                                        defaultValue={formData.idVenta.toString()}
+                                        id='idVenta'
                                         type='text'
                                         className='form-control'
-                                        name='direccionDestino1'
-                                        placeholder='ID Venta'
-                                    />
-                                </div>
-                            </div>
-                            <div className='form-group'>
-                                <div className='input-group mb-3 mt-3'>
-                                    <div className='input-group-append input-group-text'>
-                                        <label htmlFor='direccionDestino1'>
-                                            Dirección de Destino:
-                                        </label>
-                                    </div>
-                                    <input
-                                        disabled={true}
-                                        defaultValue={formData.direccionDestino1.toString()}
-                                        id='direccionDestino1'
-                                        type='text'
-                                        className='form-control'
-                                        name='direccionDestino1'
-                                        placeholder='ID Venta'
-                                    />
-                                </div>
-                            </div>
-                            <div className='form-group'>
-                                <div className='input-group mb-3 mt-3'>
-                                    <div className='input-group-append input-group-text'>
-                                        <label htmlFor='direccionDestino1'>
-                                            Fecha de Retiro:
-                                        </label>
-                                    </div>
-                                    <input
-                                        disabled={true}
-                                        defaultValue={formData.fechaRetiro1.toString()}
-                                        id='direccionDestino1'
-                                        type='text'
-                                        className='form-control'
-                                        name='direccionDestino1'
+                                        name='idVenta'
                                         placeholder='ID Venta'
                                     />
                                 </div>
                             </div>
                             <hr />
-                            {/* RUTA DOS*/}
-                            <h3>Segunda Ruta</h3>
+                            {/* ENTRADA PRECIO BRUTO*/}
                             <div className='form-group'>
                                 <div className='input-group mb-3 mt-3'>
                                     <div className='input-group-append input-group-text'>
-                                        <label htmlFor='direccionDestino1'>
-                                            Dirección de Partida:
+                                        <label htmlFor='precioBruto'>
+                                            Precio Bruto:
                                         </label>
                                     </div>
+
                                     <input
                                         disabled={true}
-                                        defaultValue={formData.direccionPartida2.toString()}
-                                        id='direccionDestino1'
+                                        id='precioBruto'
                                         type='text'
                                         className='form-control'
-                                        name='direccionDestino1'
-                                        placeholder='ID Venta'
+                                        name='precioBruto'
+                                        placeholder='Precio Bruto'
+                                        defaultValue={formData.precioBruto.toString()}
                                     />
                                 </div>
                             </div>
+
+                            {/* ENTRADA PRECIO NETO*/}
                             <div className='form-group'>
                                 <div className='input-group mb-3 mt-3'>
                                     <div className='input-group-append input-group-text'>
-                                        <label htmlFor='direccionDestino1'>
-                                            Dirección de Destino:
+                                        <label htmlFor='precioNeto'>
+                                            Precio Neto:
                                         </label>
                                     </div>
+
                                     <input
                                         disabled={true}
-                                        defaultValue={formData.direccionDestino2.toString()}
-                                        id='direccionDestino1'
+                                        id='precioNeto'
                                         type='text'
                                         className='form-control'
-                                        name='direccionDestino1'
-                                        placeholder='ID Venta'
+                                        name='precioNeto'
+                                        placeholder='Precio Neto'
+                                        defaultValue={formData.precioNeto.toString()}
                                     />
                                 </div>
                             </div>
+                            <hr />
+
+                            {/* ENTRADA FECHA INICIO*/}
                             <div className='form-group'>
                                 <div className='input-group mb-3 mt-3'>
                                     <div className='input-group-append input-group-text'>
-                                        <label htmlFor='direccionDestino1'>
-                                            Fecha de Retiro:
+                                        <label htmlFor='fechaInicio'>
+                                            Fecha Inicio:
                                         </label>
                                     </div>
+
                                     <input
                                         disabled={true}
-                                        defaultValue={formData.fechaRetiro2.toString()}
-                                        id='direccionDestino1'
-                                        type='text'
+                                        id='fechaInicio'
+                                        type='datetime'
                                         className='form-control'
-                                        name='direccionDestino1'
-                                        placeholder='ID Venta'
+                                        name='fechaInicio'
+                                        placeholder='Fecha Inicio'
+                                        defaultValue={Date(
+                                            formData.fechaFin.toString()
+                                        )}
+                                    />
+                                </div>
+                            </div>
+
+                            {/* ENTRADA FECHA FIN*/}
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='fechaFin'>
+                                            Fecha Fin:
+                                        </label>
+                                    </div>
+
+                                    <input
+                                        disabled={true}
+                                        id='fechaFin'
+                                        type='datetime'
+                                        className='form-control'
+                                        name='fechaFin'
+                                        placeholder='Fecha Fin'
+                                        defaultValue={Date(
+                                            formData.fechaFin.toString()
+                                        )}
                                     />
                                 </div>
                             </div>

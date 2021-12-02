@@ -22,7 +22,7 @@ function ListMisSolicitudes() {
     const loadData = async () => {
         // CARGAR DATA SET
         const dataSet = [];
-        form.forEach((data, index) => {
+        form?.forEach((data, index) => {
             const typeRequest = types.find(
                 (type) => type.idTipoSolicitud === data.idTipoSolicitud
             ).descripcion;

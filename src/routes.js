@@ -14,7 +14,6 @@ import EditarCliente from './page/administrador/gestionar-usuarios/gestionar-cli
 import NuevoProductor from './page/administrador/gestionar-usuarios/gestionar-productores/NuevoProductor';
 import NuevoTransportista from './page/administrador/gestionar-usuarios/gestionar-transportistas/NuevoTransportista';
 import AceptarSolicitudes from './page/administrador/gestionar-ventas/aceptar-solicitudes-de-compra/AceptarSolicitudesDeCompra';
-import DetalleSolicitudCompra from './page/administrador/gestionar-ventas/aceptar-solicitudes-de-compra/DetalleSolicitudDeCompra';
 
 /* ==== TRANSPORTISTA ===== */
 import MenuTransportista from './page/transportista/MenuTransportista';
@@ -56,6 +55,7 @@ import ComprarSaldosDisponibles from './page/clientes/cliente_interno/ComprarSal
 import ListSaldosComprados from './page/clientes/cliente_interno/ListSaldosComprados';
 import ControlarSolicitudes from './page/administrador/gestionar-ventas/controlar-solicitudes/ControlarSolicitudes';
 import ControlarVentas from './page/administrador/gestionar-ventas/controlar-ventas/ControlarVentas';
+import GestionarPagos from './page/administrador/gestionar-ventas/gestionar-pagos/GestionarPagos';
 // import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
 
 function Routes() {
@@ -118,11 +118,7 @@ function Routes() {
                     path='/administrador/gestionar-ventas/aceptar-solicitudes'
                     component={AceptarSolicitudes}
                 />
-                <Route
-                    exact
-                    path='/administrador/gestionar-ventas/aceptar-solicitudes/detalle-solicitud/:id'
-                    component={DetalleSolicitudCompra}
-                />
+
                 <Route
                     exact
                     path='/administrador/gestionar-saldos'
@@ -153,6 +149,11 @@ function Routes() {
                     exact
                     path='/administrador/gestionar-ventas/controlar_ventas'
                     component={ControlarVentas}
+                />
+                <Route
+                    exact
+                    path='/administrador/gestionar-ventas/gestionar_pagos'
+                    component={GestionarPagos}
                 />
 
                 {/* ==== TRANSPORTISTA ===== */}

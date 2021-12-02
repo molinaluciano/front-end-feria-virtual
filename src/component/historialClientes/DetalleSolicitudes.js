@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 import $ from 'jquery';
 import {
+    getAllRequest,
     getFruits,
     getQualityTypes,
     getRequestByClientId,
@@ -26,7 +27,7 @@ function DetalleSolicitudes(props) {
     let id = localStorage.getItem('IDUSER');
 
     const fetchData = async () => {
-        const allRequest = await getRequestByClientId(id);
+        const allRequest = await getAllRequest(id);
         const AllDetails = allRequest
             .filter((request) => {
                 return request.idSolicitud === Number(idSolicitud);
@@ -49,7 +50,7 @@ function DetalleSolicitudes(props) {
     const loadData = async () => {
         // CARGAR DATA SET
         const dataSet = [];
-        request.forEach((data, index) => {
+        request?.forEach((data, index) => {
             const fruitName = fruit.find(
                 (fruit) => fruit.idFruta === data.idFruta
             ).nombreFruta;
