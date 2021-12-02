@@ -49,7 +49,7 @@ function DetalleSolicitudes(props) {
     const loadData = async () => {
         // CARGAR DATA SET
         const dataSet = [];
-        request.forEach((data, index) => {
+        request?.forEach((data, index) => {
             const fruitName = fruit.find(
                 (fruit) => fruit.idFruta === data.idFruta
             ).nombreFruta;

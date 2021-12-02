@@ -41,7 +41,7 @@ function HistorialSolicitudes(props) {
     const loadData = async () => {
         // CARGAR DATA SET
         const dataSet = [];
-        request.forEach((data, index) => {
+        request?.forEach((data, index) => {
             const typeRequest = types.find(
                 (type) => type.idTipoSolicitud === data.idTipoSolicitud
             ).descripcion;

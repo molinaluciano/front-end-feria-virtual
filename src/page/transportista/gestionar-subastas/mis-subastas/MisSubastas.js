@@ -1,164 +1,37 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import SignOutComponent from '../../../../component/SignOutComponent';
-import { useEffect, useState } from 'react';
-import { getAuctionsByCarrier } from "../../../../service/Transportista/auctions-service";
-import $ from 'jquery';
-import DetalleSubasta from "./DetalleSubasta"
-import { Link } from 'react-router-dom';
 
 import ListMisSubastas from './ListMisSubasta';
 
 function MisSubastas() {
-  const [auctions, setAuctions] = useState([]);
-  const [auctionDetail, setAuctionDetail] = useState({
-    fruta: "",
-    kilos: "",
-    quality: "",
-    customerName: "",
-    customerPhone: "",
-    customerMail: "",
-    producerName: "",
-    producerMail: "",
-    producerPhone: "",
-  })
-  let carrierId = localStorage.getItem('IDUSER')
-  
-  const fetchData = async () => {
-    const getAuctionsWhoCarrierIsParticipating = await getAuctionsByCarrier(carrierId)
-    console.log('getAuctionsWhoCarrierIsParticipating', getAuctionsWhoCarrierIsParticipating)
-    setAuctions(getAuctionsWhoCarrierIsParticipating)
-    await loadData();
-  }
-  
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  const loadData = async () => {
-    // CARGAR DATA SET
-    const dataSet = [];
-    auctions.forEach((data, index) => {
-        const idSolicitud = data.idSolicitud;
-        const fechaPublicacion = data.fechaPublicacion;
-        const fechaTermino = data.fechaTermino;
-        const idCamionSeleccionado = data.camionSeleccionado;
-        const routes = data.rutas[0].detallesRuta;
-        console.log('routes', routes[0].fechaRetiro)
-
-        dataSet[index] = [
-            index + 1,
-            idSolicitud,
-            fechaPublicacion,
-            fechaTermino,
-            idCamionSeleccionado,
-            auctionDetail,
-            [
-                routes[0].direccionPartida + '!!!!',
-                routes[0].direccionDestino + '!!!!',
-                routes[0].fechaRetiro + '!!!!',
-                routes[1].direccionPartida + '!!!!',
-                routes[1].direccionDestino + '!!!!',
-                routes[1].fechaRetiro + '!!!!',
-            
-            ]
-        ];
-    });
-    // =============================================
-    // =            EJECUTAMOS DATATABLE          =
-    // =============================================
-    if (dataSet.length !== 0) {
-        $(document).ready(function () {
-            let tablaPlanes = $('.table').DataTable({
-                retrieve: true,
-                data: dataSet,
-                columnDefs: [
-                    {
-                        searchable: true,
-                        orderable: true,
-                        targets: 0,
-                    },
-                ],
-
-                order: [[0, 'desc']],
-                columns: [
-                    { title: '#' },
-                    { title: 'ID Solicitud' },
-                    { title: 'Fecha publicacion' },
-                    { title: 'Fecha Término' },
-                    { title: 'ID Camion' },
-                    {
-                        title: 'Acciones',
-                        render: function (data, arr) {
-                            return ` 
-                        <a href="#" class="detalleSubasta" data-toggle="modal" data-target="#detalleSubasta" data="${data}">
-
-                          <svg aria-hidden="true"  style="color:black; background:none; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:3px" focusable="false" data-prefix="fas" data-icon="info-circle" class="svg-inline--fa fa-info-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
-                
-                          </a>`;
-                        },
-                    },
-                ],
-            });
-
-            tablaPlanes
-                .on('order.dt search.dt', function () {
-                    tablaPlanes
-                        .column(0, { search: 'applied', order: 'applied' })
-                        .nodes()
-                        .each(function (cell, i) {
-                            cell.innerHTML = i + 1;
-                        });
-                })
-                .draw();
-        });
-    }
-};
-  loadData();
-  return (
-    <div className="container">
-          <div className='content-header'>
-        <div className='container-fluid'>
-            <div className='row mb-2'>
-                <div className='col-md-12'>
-                    <h1 className='m-0 text-dark'>
-                        Panel Transportista
-                    </h1>
+    return (
+        <div className='container'>
+            <div className='content-header'>
+                <div className='container-fluid'>
+                    <div className='row mb-2'>
+                        <div
+                            className=' jumbotron mt-5'
+                            style={{
+                                backgroundColor: '#324c3f',
+                                height: '200px',
+                                paddingTop: '80px',
+                            }}
+                        >
+                            <h1
+                                style={{
+                                    color: 'white',
+                                }}
+                            >
+                                Panel Transportista
+                            </h1>
+                        </div>
+                        <div>
+                            <ListMisSubastas />
+                        </div>
+                    </div>
                 </div>
-            <div>
-                <ListMisSubastas />
             </div>
         </div>
-    </div>
-      <div className='content'>
-          <div className='container-fluid'>
-              <div className='row'>
-                  <div className='col-lg-12'>
-                      <div className='card card-primary card-outline'>
-                          <div className='card-body'>
-                              <table
-                                  className='table table-striped dt-responsive'
-                                  style={{ width: '100%' }}
-                              ></table>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <ul className="list-group mb-5">
-        <li className="list-group-item">
-          <Link to="/transportista/gestionar-subastas" className="list-group-item list-group-item-action">
-            Ir hacia atrás
-          </Link>
-          <hr />
-          <SignOutComponent />
-        </li>
-      </ul>
-      <DetalleSubasta/>
-    </div>
-    </div>
-  );
+    );
 }
 
 export default MisSubastas;

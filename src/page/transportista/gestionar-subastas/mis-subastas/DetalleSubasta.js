@@ -11,7 +11,6 @@ const initialValues = {
     direccionDestino2: '',
     direccionPartida2: '',
     fechaRetiro2: '',
-
 };
 function DetalleVenta() {
     const [formData, setFormData] = useState(initialValues);
@@ -20,15 +19,14 @@ function DetalleVenta() {
         $(document).on('click', '.detalleSubasta', function (e) {
             e.preventDefault();
             let data = $(this).attr('data').split('!!!!,');
-            console.log('data', data[0])
 
             setFormData({
-                direccionDestino1: JSON.stringify(data[0]),
-                direccionPartida1: JSON.stringify(data[1]),
-                fechaRetiro1: JSON.stringify(data[2]),
-                direccionDestino2: JSON.stringify(data[3]),
-                direccionPartida2: JSON.stringify(data[4]),
-                fechaRetiro2: JSON.stringify(data[5]),
+                direccionPartida1: data[0],
+                direccionDestino1: data[1],
+                fechaRetiro1: data[2],
+                direccionPartida2: data[3],
+                direccionDestino2: data[4],
+                fechaRetiro2: data[5],
             });
         });
     };
@@ -42,19 +40,38 @@ function DetalleVenta() {
             <div className='modal-dialog'>
                 <div className='modal-content'>
                     <div className='modal-header'>
-                        <h4 className='modal-title'>Detalle de Venta</h4>
+                        <h4 className='modal-title'>Detalle de Rutas</h4>
                     </div>
 
                     <form encType='multipart/form-data'>
                         <div className='modal-body'>
-                            {/* ENTRADA ID VENTA*/}
-                        <div className='form-group'>
-                            <div className='input-group mb-3 mt-3'>
-                                <div className='input-group-append input-group-text'>
-                                    <label htmlFor='direccionDestino1'>
-                                        direccionDestino1:
-                                    </label>
+                            {/* RUTA UNO*/}
+                            <h3>Primera Ruta</h3>
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='direccionDestino1'>
+                                            Dirección de Partida:
+                                        </label>
+                                    </div>
+                                    <input
+                                        disabled={true}
+                                        defaultValue={formData.direccionPartida1.toString()}
+                                        id='direccionDestino1'
+                                        type='text'
+                                        className='form-control'
+                                        name='direccionDestino1'
+                                        placeholder='ID Venta'
+                                    />
                                 </div>
+                            </div>
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='direccionDestino1'>
+                                            Dirección de Destino:
+                                        </label>
+                                    </div>
                                     <input
                                         disabled={true}
                                         defaultValue={formData.direccionDestino1.toString()}
@@ -66,7 +83,81 @@ function DetalleVenta() {
                                     />
                                 </div>
                             </div>
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='direccionDestino1'>
+                                            Fecha de Retiro:
+                                        </label>
+                                    </div>
+                                    <input
+                                        disabled={true}
+                                        defaultValue={formData.fechaRetiro1.toString()}
+                                        id='direccionDestino1'
+                                        type='text'
+                                        className='form-control'
+                                        name='direccionDestino1'
+                                        placeholder='ID Venta'
+                                    />
+                                </div>
+                            </div>
                             <hr />
+                            {/* RUTA DOS*/}
+                            <h3>Segunda Ruta</h3>
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='direccionDestino1'>
+                                            Dirección de Partida:
+                                        </label>
+                                    </div>
+                                    <input
+                                        disabled={true}
+                                        defaultValue={formData.direccionPartida2.toString()}
+                                        id='direccionDestino1'
+                                        type='text'
+                                        className='form-control'
+                                        name='direccionDestino1'
+                                        placeholder='ID Venta'
+                                    />
+                                </div>
+                            </div>
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='direccionDestino1'>
+                                            Dirección de Destino:
+                                        </label>
+                                    </div>
+                                    <input
+                                        disabled={true}
+                                        defaultValue={formData.direccionDestino2.toString()}
+                                        id='direccionDestino1'
+                                        type='text'
+                                        className='form-control'
+                                        name='direccionDestino1'
+                                        placeholder='ID Venta'
+                                    />
+                                </div>
+                            </div>
+                            <div className='form-group'>
+                                <div className='input-group mb-3 mt-3'>
+                                    <div className='input-group-append input-group-text'>
+                                        <label htmlFor='direccionDestino1'>
+                                            Fecha de Retiro:
+                                        </label>
+                                    </div>
+                                    <input
+                                        disabled={true}
+                                        defaultValue={formData.fechaRetiro2.toString()}
+                                        id='direccionDestino1'
+                                        type='text'
+                                        className='form-control'
+                                        name='direccionDestino1'
+                                        placeholder='ID Venta'
+                                    />
+                                </div>
+                            </div>
                         </div>
 
                         <div className='modal-footer d-flex justify-content-center'>
