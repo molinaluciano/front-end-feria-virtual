@@ -70,7 +70,12 @@ function Login() {
     });
 
     return (
-        <div className='container'>
+        <div
+            className='container-fluid'
+            style={{
+                backgroundColor: '#324c3f',
+            }}
+        >
             <header
                 className='App-header'
                 style={{
