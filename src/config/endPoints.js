@@ -54,6 +54,8 @@ module.exports = {
         getPayType: '/select-pay-type',
         getStatusSale: '/select-status-sale',
         getAllRequest: '/requests',
+        detailsAuction: '/detail-auctions',
+        producerRequest: '/select-producer-request',
     },
 };
 

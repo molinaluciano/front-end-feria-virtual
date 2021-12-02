@@ -55,6 +55,7 @@ import ComprarSaldosDisponibles from './page/clientes/cliente_interno/ComprarSal
 import ListSaldosComprados from './page/clientes/cliente_interno/ListSaldosComprados';
 import ControlarSolicitudes from './page/administrador/gestionar-ventas/controlar-solicitudes/ControlarSolicitudes';
 import ControlarVentas from './page/administrador/gestionar-ventas/controlar-ventas/ControlarVentas';
+import GestionarPagos from './page/administrador/gestionar-ventas/gestionar-pagos/GestionarPagos';
 // import GestionarSubastasProductor from "./page/transportista/gestionar-subastas/GestionarSubastasProductor";
 
 function Routes() {
@@ -147,6 +148,11 @@ function Routes() {
                     exact
                     path='/administrador/gestionar-ventas/controlar_ventas'
                     component={ControlarVentas}
+                />
+                <Route
+                    exact
+                    path='/administrador/gestionar-ventas/gestionar_pagos'
+                    component={GestionarPagos}
                 />
 
                 {/* ==== TRANSPORTISTA ===== */}

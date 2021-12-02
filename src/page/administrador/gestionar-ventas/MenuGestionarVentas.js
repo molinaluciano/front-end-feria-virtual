@@ -1,15 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../../../component/SignOutComponent';
-import { Link, useHistory } from 'react-router-dom';
-import { Button } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import BackToComponent from '../../../component/backToComponent';
 
 function MenuGestionarVentas() {
-    let history = useHistory();
-    const goToPreviousPath = () => {
-        history.goBack();
-    };
-
     return (
         <div className='container'>
             <div
@@ -49,7 +43,7 @@ function MenuGestionarVentas() {
                         Controlar Ventas
                     </Link>
                     <Link
-                        to='#'
+                        to='/administrador/gestionar-ventas/gestionar_pagos'
                         className='list-group-item list-group-item-action'
                     >
                         Gestionar Pagos
