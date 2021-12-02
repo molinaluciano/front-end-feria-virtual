@@ -85,7 +85,7 @@ function Login() {
                 <h1
                     className='mb-5'
                     style={{
-                        color: '#8d4e2f',
+                        color: 'white',
                     }}
                 >
                     Login Feria Virtual Web App
