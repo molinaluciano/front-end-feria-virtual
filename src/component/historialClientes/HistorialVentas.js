@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Button } from 'reactstrap';
 import $ from 'jquery';
 import { getRequestByClientId } from '../../service/Cliente-Externo/request-service';
+import { finishSale } from '../../service/Cliente-Externo/sales-service';
 import DetalleVenta from './detalleVenta';
 import {
     getPayTypes,
@@ -83,6 +84,8 @@ function HistorialVentas(props) {
                         detailSale.precioNeto + '!!!!',
                         detailSale.fechaFin + '!!!!',
                         detailSale.fechaInicio,
+                        saleStatus,
+                        data.idVenta,
                     ],
                 ];
             }
@@ -113,12 +116,31 @@ function HistorialVentas(props) {
                         {
                             title: 'Acciones',
                             render: function (data, arr) {
-                                return ` 
-                            <a href="#" class="detallesVenta" data-toggle="modal" data-target="#detallesVenta" data="${data}">
-    
-                              <svg aria-hidden="true"  style="color:black; background:none; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:3px" focusable="false" data-prefix="fas" data-icon="info-circle" class="svg-inline--fa fa-info-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
-                    
-                              </a>`;
+                                let form = {
+                                    idventa: data[7],
+                                    responseCode: 0
+                                }
+                                if(data[6] === "ENTREGADA"){
+                                    return ` 
+                                    <a href="#" class="detallesVenta" data-toggle="modal" data-target="#detallesVenta" data="${data}">
+            
+                                    <svg aria-hidden="true"  style="color:black; background:none; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:3px" focusable="false" data-prefix="fas" data-icon="info-circle" class="svg-inline--fa fa-info-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
+                            
+                                    </a>
+                                    <button class="pagar" onClick={() => finishSale(${form})}>
+            
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="color:black; background:none; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:3px" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="shopping-cart" class="svg-inline--fa fa-shopping-cart fa-w-18" role="img" viewBox="0 0 576 512"><path fill="currentColor" d="M528.12 301.319l47.273-208C578.806 78.301 567.391 64 551.99 64H159.208l-9.166-44.81C147.758 8.021 137.93 0 126.529 0H24C10.745 0 0 10.745 0 24v16c0 13.255 10.745 24 24 24h69.883l70.248 343.435C147.325 417.1 136 435.222 136 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-15.674-6.447-29.835-16.824-40h209.647C430.447 426.165 424 440.326 424 456c0 30.928 25.072 56 56 56s56-25.072 56-56c0-22.172-12.888-41.332-31.579-50.405l5.517-24.276c3.413-15.018-8.002-29.319-23.403-29.319H218.117l-6.545-32h293.145c11.206 0 20.92-7.754 23.403-18.681z"/></svg>
+                            
+                                    </button>`;
+                                }else{
+
+                                    return ` 
+                                    <a href="#" class="detallesVenta" data-toggle="modal" data-target="#detallesVenta" data="${data}">
+            
+                                    <svg aria-hidden="true"  style="color:black; background:none; border-radius:100%; width:35px; line-height:35px; text-align:center; padding:3px" focusable="false" data-prefix="fas" data-icon="info-circle" class="svg-inline--fa fa-info-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z"></path></svg>
+                            
+                                    </a>`;
+                                }
                             },
                         },
                     ],

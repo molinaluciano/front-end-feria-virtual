@@ -125,6 +125,7 @@ function AgregarCamion() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
+                window.location.reload();
                 // window.location.href = "/transportista/gestionar-camiones/mis-camiones";
             });
         } catch (error) {
@@ -134,6 +135,7 @@ function AgregarCamion() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
+                window.location.reload();
                 // window.location.href = "/";
             });
         }

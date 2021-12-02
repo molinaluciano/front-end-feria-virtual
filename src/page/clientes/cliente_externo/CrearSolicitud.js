@@ -75,7 +75,7 @@ function CrearSolicitud() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
-                window.location.href = '/cliente_externo';
+                window.location.reload();
             });
         } catch (error) {
             swal({
@@ -84,7 +84,7 @@ function CrearSolicitud() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
-                window.location.href = '/';
+                window.location.reload();
             });
         }
     };

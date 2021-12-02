@@ -2,6 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../../../component/SignOutComponent';
 import { Link } from 'react-router-dom';
 import BackToComponent from './../../../component/backToComponent';
+import ListMisSolicitudes from './ListMisSolicitudes';
 
 function MisSolicitudes() {
     return (
@@ -22,19 +23,7 @@ function MisSolicitudes() {
                     Mis Solicitudes
                 </h1>
             </div>
-            <ul className='list-group mb-5'>
-                <li className='list-group-item'>
-                    <Link
-                        to=''
-                        className='list-group-item list-group-item-action'
-                    >
-                        *DATAFRAME MIS SOLICITUDES
-                    </Link>
-                    <BackToComponent />
-                    <hr />
-                    <SignOutComponent />
-                </li>
-            </ul>
+            <ListMisSolicitudes />
         </div>
     );
 }

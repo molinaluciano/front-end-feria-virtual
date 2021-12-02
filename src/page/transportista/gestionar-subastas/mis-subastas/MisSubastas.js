@@ -6,6 +6,7 @@ import $ from 'jquery';
 import DetalleSubasta from "./DetalleSubasta"
 import { Link } from 'react-router-dom';
 
+import ListMisSubastas from './ListMisSubasta';
 
 function MisSubastas() {
   const [auctions, setAuctions] = useState([]);
@@ -124,6 +125,8 @@ function MisSubastas() {
                         Panel Transportista
                     </h1>
                 </div>
+            <div>
+                <ListMisSubastas />
             </div>
         </div>
     </div>
@@ -153,6 +156,7 @@ function MisSubastas() {
         </li>
       </ul>
       <DetalleSubasta/>
+    </div>
     </div>
   );
 }
