@@ -50,7 +50,7 @@ function DetalleVenta() {
                                 <div className='input-group mb-3 mt-3'>
                                     <div className='input-group-append input-group-text'>
                                         <label htmlFor='idVenta'>
-                                            ID Venta:
+                                            ID Detalle Venta:
                                         </label>
                                     </div>
                                     <input

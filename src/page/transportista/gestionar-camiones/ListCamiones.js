@@ -44,8 +44,8 @@ function ListCamiones() {
                 truck.patente,
                 truck.modelo,
                 truck.marca,
-                truck.revisionTecnica,
-                truck.disponibilidad,
+                truck.revisionTecnica === 1 ? 'Al dia' : 'Atrasada',
+                truck.disponibilidad === 1 ? 'Disponible' : 'No Disponible',
                 [
                     truck.idCamion + '!!!!',
                     truck.idTipoCamion + '!!!!',

@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../../../component/SignOutComponent';
+import BackToComponent from '../../../component/backToComponent';
 import { Link } from 'react-router-dom';
 
 function MenuGestionarSubastas() {
@@ -35,6 +36,7 @@ function MenuGestionarSubastas() {
                     >
                         Participar Subasta
                     </Link>
+                    <BackToComponent />
                     <hr />
                     <SignOutComponent />
                 </li>

@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SignOutComponent from '../../../component/SignOutComponent';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { getRequestByStatusId } from '../../../service/Productor/request-service';
 import { useState, useEffect } from 'react';
 import Skeleton from '@mui/material/Skeleton';
@@ -10,10 +10,11 @@ import {
     getFruitById,
 } from '../../../service/Productor/request-service';
 import BackToComponent from './../../../component/backToComponent';
+import { Button } from 'reactstrap';
 
 function SolicitudesDisponibles() {
     const [requests, setRequests] = useState([]);
-
+    const history = useHistory();
     const fetchData = async () => {
         const response = await getRequestByStatusId(3);
         console.log('response', response);
@@ -106,7 +107,15 @@ function SolicitudesDisponibles() {
             <ul className='list-group mb-5'>
                 <li className='list-group-item'>
                     <div class='row'>{displayRequests}</div>
-                    <BackToComponent />
+                    <Button
+                        className='mt-3'
+                        style={{ backgroundColor: '#33334b' }}
+                        onClick={() => {
+                            history.push('/productor');
+                        }}
+                    >
+                        Volver atrás
+                    </Button>
 
                     <hr />
                     <SignOutComponent />

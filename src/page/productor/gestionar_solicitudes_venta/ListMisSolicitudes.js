@@ -6,7 +6,10 @@ import 'datatables.net-bs4';
 import 'datatables.net-responsive';
 import BackToComponent from '../../../component/backToComponent';
 import SignOutComponent from '../../../component/SignOutComponent';
-import { getRequestByClientId } from '../../../service/Cliente-Externo/request-service';
+import {
+    getAllRequest,
+    getRequestByClientId,
+} from '../../../service/Cliente-Externo/request-service';
 import {
     getStatusRequest,
     getTypeRequest,
@@ -21,6 +24,7 @@ function ListMisSolicitudes() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const loadData = async () => {
         // CARGAR DATA SET
+
         const dataSet = [];
         form?.forEach((data, index) => {
             const typeRequest = types.find(
@@ -98,13 +102,19 @@ function ListMisSolicitudes() {
             const idCarrier = localStorage.getItem('IDUSER');
             let response = [];
             try {
-                const myRequests = await getRequestByClientId(idCarrier);
+                const myRequests = await getAllRequest();
+                const requestfiltered = myRequests.filter(
+                    (request) =>
+                        Number(request.productorSeleccionado) ===
+                        Number(idCarrier)
+                );
+
                 const typeRequest = await getTypeRequest();
                 const statusRequest = await getStatusRequest();
 
                 setStatus(statusRequest);
                 setTypes(typeRequest);
-                response = myRequests;
+                response = requestfiltered;
             } catch (error) {
                 throw new Error(error);
             }

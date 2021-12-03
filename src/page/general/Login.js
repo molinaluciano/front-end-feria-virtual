@@ -93,7 +93,7 @@ function Login() {
                 <form onSubmit={sendForm}>
                     <div className='mb-3'>
                         <label for='InputEmail' className='form-label'>
-                            Correo Electronico
+                            Correo Electrónico
                         </label>
                         <input
                             onChange={handleInputChange}

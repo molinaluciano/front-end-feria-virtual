@@ -62,6 +62,10 @@ function GestionarPagos(props) {
             ?.filter((request) => request.venta != null)
             ?.map((request) => request.venta);
 
+        const filerSales = allSales?.filter(
+            (sale) => Number(sale.idEstadoVenta) === 6
+        );
+
         const allDetailAuction = await getDetailAuctions();
 
         const allProducerRequest = await getAllProducerRequest();
@@ -71,7 +75,7 @@ function GestionarPagos(props) {
         setProducerRequest(allProducerRequest);
         setPayType(allPayType);
         setStatusSale(allStatusSale);
-        setSales(allSales);
+        setSales(filerSales);
         if (allSales) {
             await loadData();
         }

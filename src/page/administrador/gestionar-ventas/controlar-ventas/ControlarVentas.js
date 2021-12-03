@@ -22,10 +22,13 @@ function ControlarVentas(props) {
         const allPayType = await getPayTypes();
         const allStatusSale = await getStatusSales();
         const allSales = await getSales();
+        const filterSAles = allSales.filter(
+            (sale) => sale.detalleVenta != null
+        );
 
         setPayType(allPayType);
         setStatusSale(allStatusSale);
-        setSales(allSales);
+        setSales(filterSAles);
     };
 
     useEffect(() => {
@@ -36,7 +39,7 @@ function ControlarVentas(props) {
         // CARGAR DATA SET
         const dataSet = [];
 
-        sales.forEach((data, index) => {
+        sales?.forEach((data, index) => {
             if (data != null) {
                 // const { detalleVenta } = data;
 
