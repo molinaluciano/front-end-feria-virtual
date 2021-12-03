@@ -104,6 +104,7 @@ function NuevoProductor() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
+                window.location.reload();
                 // window.location.href = "/administrador/gestionar-usuarios";
             });
         } catch (error) {

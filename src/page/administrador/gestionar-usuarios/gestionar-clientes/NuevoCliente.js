@@ -111,16 +111,14 @@ function NuevoCliente() {
 
         try {
             const result = await createUser(form, null);
-            console.log(
-                '🚀 ~ file: Login.js ~ line 48 ~ sendForm ~ result',
-                result
-            );
+
             swal({
                 title: 'Usuario creado exitosamente!',
                 type: 'error',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
+                window.location.reload();
                 // window.location.href = "/administrador/gestionar-usuarios";
             });
         } catch (error) {
@@ -130,6 +128,8 @@ function NuevoCliente() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
+                window.location.reload();
+
                 // window.location.href = "/";
             });
         }

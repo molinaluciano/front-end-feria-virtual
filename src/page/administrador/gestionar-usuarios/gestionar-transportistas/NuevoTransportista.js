@@ -96,7 +96,8 @@ function NuevoTransportista() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
-                window.location.href = '/administrador/gestionar-usuarios';
+                window.location.reload();
+                // window.location.href = '/administrador/gestionar-usuarios';
             });
         } catch (error) {
             swal({
@@ -105,7 +106,7 @@ function NuevoTransportista() {
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Ok',
             }).then(() => {
-                window.location.href = '/';
+                // window.location.href = '/';
             });
         }
     };

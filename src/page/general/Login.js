@@ -98,7 +98,7 @@ function Login() {
                         <input
                             onChange={handleInputChange}
                             name='email'
-                            placeholder='Correo Electronico'
+                            placeholder='Correo Electrónico'
                             className='form-control'
                             id='InputEmail'
                         />

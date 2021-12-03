@@ -58,7 +58,9 @@ function GestionarPagos(props) {
 
         const allAuctions = await getAllAuctions();
 
-        const allSales = allRequest?.map((request) => request.venta);
+        const allSales = allRequest
+            ?.filter((request) => request.venta != null)
+            ?.map((request) => request.venta);
 
         const allDetailAuction = await getDetailAuctions();
 
@@ -71,7 +73,7 @@ function GestionarPagos(props) {
         setStatusSale(allStatusSale);
         setSales(allSales);
         if (allSales) {
-            //await loadData();
+            await loadData();
         }
     };
 
