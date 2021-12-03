@@ -207,7 +207,7 @@ function AgregarCamion() {
                                         <label
                                             class='checkbox-inline'
                                             name='fridgeRadioLabel'
-                                        ></label>
+                                        >Refrigeración:</label>
                                         <select
                                             onChange={
                                                 fridgeOptionChangeCapacities
@@ -227,7 +227,7 @@ function AgregarCamion() {
                                         <label
                                             class='checkbox-inline'
                                             name='fridgeRadioLabel'
-                                        ></label>
+                                        >Capacidad:</label>
                                         <select
                                             onChange={handleInputChange}
                                             name='idKilos'
@@ -244,7 +244,7 @@ function AgregarCamion() {
                                         <label
                                             class='checkbox-inline'
                                             name='fridgeRadioLabel'
-                                        ></label>
+                                        >Revisión Técnica</label>
                                         <select
                                             onChange={handleInputChange}
                                             name='revisionTecnica'

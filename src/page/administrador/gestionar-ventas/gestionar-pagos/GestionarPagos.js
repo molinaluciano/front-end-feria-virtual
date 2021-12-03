@@ -54,7 +54,7 @@ function GestionarPagos(props) {
         const allPayType = await getPayTypes();
         const allStatusSale = await getStatusSales();
         // dsp cambiar por el 5
-        const allRequest = await getRequestByStatusId(2);
+        const allRequest = await getRequestByStatusId(5);
 
         const allAuctions = await getAllAuctions();
 
@@ -83,7 +83,7 @@ function GestionarPagos(props) {
         // CARGAR DATA SET
         const dataSet = [];
 
-        sales.forEach((data, index) => {
+        sales?.forEach((data, index) => {
             if (data != null) {
                 const { priceAuction, priceProducer, priceCompany, iva } =
                     findPrices(data.idSolicitud);

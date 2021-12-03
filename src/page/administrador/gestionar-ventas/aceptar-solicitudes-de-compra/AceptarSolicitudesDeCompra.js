@@ -71,9 +71,10 @@ function MenuAdministrador() {
                 'Aceptada!',
                 `La solicitud de compra N*${idRequest} ha sido aceptada!`,
                 'success'
-            );
-            window.location.href = `/administrador/gestionar-ventas/aceptar-solicitudes`;
+            ).then(()=>{window.location.href = `/administrador/gestionar-ventas/aceptar-solicitudes`;});
+            //window.location.reload();
         });
+        //window.location.href = `/administrador/gestionar-ventas/aceptar-solicitudes`;
     };
 
     const declineNotify = (idRequest) => {
@@ -91,8 +92,7 @@ function MenuAdministrador() {
                 'Rechazada!',
                 `La solicitud de compra N*${idRequest} ha sido rechazada!`,
                 'error'
-            );
-            window.location.href = `/administrador/gestionar-ventas/aceptar-solicitudes`;
+            ).then(()=>{window.location.href = `/administrador/gestionar-ventas/aceptar-solicitudes`});           
         });
     };
 
@@ -106,7 +106,7 @@ function MenuAdministrador() {
 
     const declineRequest = async (idRequest) => {
         try {
-            const result = await changeRequestStatus(idRequest, 2);
+            const result = await changeRequestStatus(idRequest, 1);
         } catch (error) {
             swal('Ups, hubo un error!', `${error}`, 'error');
         }

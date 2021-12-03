@@ -16,10 +16,10 @@ function DetalleSolicitudDisponible() {
 
   const [requestDetail, setRequest] = useState({
     fruta: "",
-    kilos: 0,
+    kilos: "",
     quality: "",
     customerName: "",
-    customerPhone: 0,
+    customerPhone: "",
     customerMail: ""
   })
   const [form, setHandleForm] = useState({
