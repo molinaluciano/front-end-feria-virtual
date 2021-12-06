@@ -39,7 +39,7 @@ function GestionarPagos(props) {
             return Number(producer.idSolicitud) === Number(idRequest);
         })?.precio;
 
-        const priceCompany = Math.round((priceAuction + priceProducer) * 1.2);
+        const priceCompany = Math.round((priceAuction + priceProducer) * 0.2);
 
         const iva = Math.round(priceCompany * 0.19);
         return {
